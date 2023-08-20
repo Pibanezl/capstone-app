@@ -10,7 +10,6 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <p>wea?</p>
         <p>acsmdhskdfjhkjdsfo</p>
         <a
           className="App-link"
