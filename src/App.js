@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from './logo.svg';
 import logo2 from './no.jpg';
 import './App.css';
 
@@ -9,6 +8,8 @@ class App extends React.Component {
   cambioColor = () => {
     alert('asdadasdasdasdasdasd');
   }
+
+
 
   render() {
     return (
