@@ -29,6 +29,12 @@
   min-height: 90vh;
 }
 
+.contenedorBotones{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .App-link {
   color: #61dafb;
 }
