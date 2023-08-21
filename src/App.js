@@ -18,22 +18,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo2} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <p>acsmdh</p>
-          <button class="cambioBoton" onClick={this.cambioColor}>cambiar color</button>
-          <button class="cambioBoton" onClick={this.cambioFuente}>cambiar fuente</button>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            aprenda React
-          </a>
+          <h1>Portafolio de título</h1>
         </header>
+        <section class="seccionBotones">
+          <div class="contenedorBotones">
+            <button class="cambioBoton" onClick={this.cambioColor}>cambiar color</button>
+            <button class="cambioBoton" onClick={this.cambioFuente}>cambiar fuente</button>
+          </div>
+        </section>
       </div>
     );
   }
