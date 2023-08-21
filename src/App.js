@@ -6,9 +6,12 @@ class App extends React.Component {
 
   
   cambioColor = () => {
-    alert('asdadasdasdasdasdasd');
+    alert('cambio color');
   }
 
+  cambioFuente = () => {
+    alert('cambio fuente');
+  }
 
 
   render() {
@@ -20,7 +23,8 @@ class App extends React.Component {
             Edit <code>src/App.js</code> and save to reload.
           </p>
           <p>acsmdh</p>
-          <button onClick={this.cambioColor}>wea</button>
+          <button class="cambioBoton" onClick={this.cambioColor}>cambiar color</button>
+          <button class="cambioBoton" onClick={this.cambioFuente}>cambiar fuente</button>
           <a
             className="App-link"
             href="https://reactjs.org"
