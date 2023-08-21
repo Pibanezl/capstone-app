@@ -1,5 +1,4 @@
 import React from 'react'
-import logo2 from './no.jpg';
 import './App.css';
 
 class App extends React.Component {
