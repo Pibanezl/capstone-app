@@ -1,39 +1,34 @@
-import React from 'react'
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import React, { useEffect, useState } from 'react'
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 import './App.css';
-import handleSubmit from './handles/handlesubmit';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      buttonColor: 'blue',
-      buttonFuente: 'roboto',
-      dataRef: useRef()
-    };
-  }
-  
-  cambioColor = () => {
-    const newColor = this.state.buttonColor === 'blue' ? 'red' : 'blue';
-    this.setState({ buttonColor: newColor });
-  }
+import {db} from './firebase_setup/firebase';
+const App = () => {
+  const [buttonColor, setButtonColor] = useState('blue')
+  const [buttonFuente, setButtonFuente] = useState('roboto')
+  const [usuarios, setUsuarios] = useState([])
+  useEffect(() => {
+    db.collection('usuarios')
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          setUsuarios(doc.data());
+        });
+      });
+  }, []);
 
-  cambioFuente = () => {
-    const newFuente = this.state.buttonFuente === 'roboto' ? 'arial' : 'roboto';
-    this.setState({ buttonFuente: newFuente });
-  }
-
-  componentDidMount(e) {
-    e.preventDefault()
-    handleSubmit(dataRef.current.value)
-    dataRef.current.value = ""
+  function cambioColor() {
+    const newColor = buttonColor === 'blue' ? 'red' : 'blue';
+    setButtonColor({ buttonColor: newColor });
   }
 
-  render() {
-    const { usuarios } = this.state;
-    console.log("LISTA",usuarios)
+  function cambioFuente () {
+    const newFuente = buttonFuente === 'roboto' ? 'arial' : 'roboto';
+    setButtonFuente({ buttonFuente: newFuente });
+  }
+ 
+  console.log("USUARIOS",usuarios)
     return (
       <div className="App">
         <header className="App-header">
@@ -41,13 +36,12 @@ class App extends React.Component {
         </header>
         <section className="seccionBotones">
           <div className="contenedorBotones">
-            <button data-testid="cambioColor" className="cambioBoton" id="cambioColor" onClick={this.cambioColor} style={{ backgroundColor: this.state.buttonColor }}>cambio color</button>
-            <button data-testid="cambioFuente" className="cambioFuente" id="cambioFuente" onClick={this.cambioFuente} style={{ fontFamily: this.state.buttonFuente }}>cambio fuente</button>
+            <button data-testid="cambioColor" className="cambioBoton" id="cambioColor" onClick={cambioColor} style={{ backgroundColor: buttonColor }}>cambio color</button>
+            <button data-testid="cambioFuente" className="cambioFuente" id="cambioFuente" onClick={cambioFuente} style={{ fontFamily: buttonFuente }}>cambio fuente</button>
           </div>
         </section>
       </div>
     );
-  }
 }
 
 export default App;
