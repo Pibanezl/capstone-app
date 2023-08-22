@@ -11,15 +11,17 @@ const App = () => {
   const [usuarios, setUsuarios] = useState(auxUsuarios)
 
   useEffect(() => {
-    db.collection('usuarios')
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          auxUsuarios.push(doc.data())
-        });
-        setUsuarios(auxUsuarios);
+    const fetchData = async () => {
+      const querySnapshot = await db.collection('usuarios').get();
+      const auxUsuarios = [];
+      querySnapshot.forEach(doc => {
+        auxUsuarios.push(doc.data());
       });
-  }, [db]);
+      setUsuarios(auxUsuarios);
+    };
+
+    fetchData();
+  }, []);
 
   function cambioColor() {
     const newColor = buttonColor === 'blue' ? 'red' : 'blue';
@@ -30,7 +32,11 @@ const App = () => {
     const newFuente = buttonFuente === 'roboto' ? 'arial' : 'roboto';
     setButtonFuente(newFuente);
   }
-  console.log("USUARIOS",usuarios)
+
+  
+    console.log("USUARIOS",usuarios)
+
+
     return (
       <div className="App">
         <header className="App-header">
