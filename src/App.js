@@ -1,15 +1,20 @@
 import React from 'react'
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 import './App.css';
+import handleSubmit from './handles/handlesubmit';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       buttonColor: 'blue',
-      buttonFuente: 'roboto'
+      buttonFuente: 'roboto',
+      dataRef: useRef()
     };
   }
-
+  
   cambioColor = () => {
     const newColor = this.state.buttonColor === 'blue' ? 'red' : 'blue';
     this.setState({ buttonColor: newColor });
@@ -20,7 +25,15 @@ class App extends React.Component {
     this.setState({ buttonFuente: newFuente });
   }
 
+  componentDidMount(e) {
+    e.preventDefault()
+    handleSubmit(dataRef.current.value)
+    dataRef.current.value = ""
+  }
+
   render() {
+    const { usuarios } = this.state;
+    console.log("LISTA",usuarios)
     return (
       <div className="App">
         <header className="App-header">
