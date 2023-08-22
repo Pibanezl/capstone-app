@@ -2,16 +2,23 @@ import React from 'react'
 import './App.css';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      buttonColor: 'blue',
+      buttonFuente: 'roboto'
+    };
+  }
 
-  
   cambioColor = () => {
-    alert('cambio color');
+    const newColor = this.state.buttonColor === 'blue' ? 'red' : 'blue';
+    this.setState({ buttonColor: newColor });
   }
 
   cambioFuente = () => {
-    alert('cambio fuente');
+    const newFuente = this.state.buttonFuente === 'roboto' ? 'arial' : 'roboto';
+    this.setState({ buttonFuente: newFuente });
   }
-
 
   render() {
     return (
@@ -19,10 +26,10 @@ class App extends React.Component {
         <header className="App-header">
           <h1>Portafolio de título</h1>
         </header>
-        <section class="seccionBotones">
-          <div class="contenedorBotones">
-            <button class="cambioBoton" onClick={this.cambioColor}>cambiar color</button>
-            <button class="cambioBoton" onClick={this.cambioFuente}>cambiar fuente</button>
+        <section className="seccionBotones">
+          <div className="contenedorBotones">
+            <button data-testid="cambioColor" className="cambioBoton" id="cambioColor" onClick={this.cambioColor} style={{ backgroundColor: this.state.buttonColor }}>cambio color</button>
+            <button data-testid="cambioFuente" className="cambioFuente" id="cambioFuente" onClick={this.cambioFuente} style={{ fontFamily: this.state.buttonFuente }}>cambio fuente</button>
           </div>
         </section>
       </div>
