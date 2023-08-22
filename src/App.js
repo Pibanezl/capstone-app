@@ -7,27 +7,29 @@ import {db} from './firebase_setup/firebase';
 const App = () => {
   const [buttonColor, setButtonColor] = useState('blue')
   const [buttonFuente, setButtonFuente] = useState('roboto')
-  const [usuarios, setUsuarios] = useState([])
+  let auxUsuarios = []
+  const [usuarios, setUsuarios] = useState(auxUsuarios)
+
   useEffect(() => {
     db.collection('usuarios')
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          setUsuarios(doc.data());
+          auxUsuarios.push(doc.data())
         });
+        setUsuarios(auxUsuarios);
       });
-  }, []);
+  }, [db]);
 
   function cambioColor() {
     const newColor = buttonColor === 'blue' ? 'red' : 'blue';
-    setButtonColor({ buttonColor: newColor });
+    setButtonColor(newColor);
   }
 
   function cambioFuente () {
     const newFuente = buttonFuente === 'roboto' ? 'arial' : 'roboto';
-    setButtonFuente({ buttonFuente: newFuente });
+    setButtonFuente(newFuente);
   }
- 
   console.log("USUARIOS",usuarios)
     return (
       <div className="App">
