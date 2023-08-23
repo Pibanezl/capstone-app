@@ -4,24 +4,25 @@ import './App.css';
 import  useCollectionData  from './firebase_setup/useCollectionData';
 
 const App = () => {
-  const [buttonColor, setButtonColor] = useState('blue')
-  const [buttonFuente, setButtonFuente] = useState('roboto')
-  const collectionName = "usuarios"; // Nombre de la colección deseada
-  const usuariosData = useCollectionData(collectionName);
+  const collectionUsuarios = "usuarios"; // Nombre de la colección deseada
+  const collectionCiudades = "ciudades"; // Nombre de la colección deseada
+  const usuariosData = useCollectionData(collectionUsuarios);
+  const [showUsuarios, setShowUsuarios] = useState(false);
 
-  function cambioColor() {
-    const newColor = buttonColor === 'blue' ? 'red' : 'blue';
-    setButtonColor(newColor);
+  const ciudadesData = useCollectionData(collectionCiudades);
+  const [showCiudades, setShowCiudades] = useState(false);
+
+  function mostrarUsuarios() {
+    setShowUsuarios(!showUsuarios);
   }
 
-  function cambioFuente () {
-    const newFuente = buttonFuente === 'roboto' ? 'arial' : 'roboto';
-    setButtonFuente(newFuente);
+  function mostrarCiudades () {
+    setShowCiudades(!showCiudades);
   }
 
   
     console.log("usuarios",usuariosData)
-
+    console.log("ciudads",ciudadesData)
 
     return (
       <div className="App">
@@ -30,10 +31,34 @@ const App = () => {
         </header>
         <section className="seccionBotones">
           <div className="contenedorBotones">
-            <button data-testid="cambioColor" className="cambioBoton" id="cambioColor" onClick={cambioColor} style={{ backgroundColor: buttonColor }}>cambio color</button>
-            <button data-testid="cambioFuente" className="cambioFuente" id="cambioFuente" onClick={cambioFuente} style={{ fontFamily: buttonFuente }}>cambio fuente</button>
+            <button data-testid="mostrarUsuarios" className="mostrarUsuarios" id="mostrarUsuarios" onClick={mostrarUsuarios} >mostrar usuarios</button>
+            <button data-testid="mostrarCiudades" className="mostrarCiudades" id="mostrarCiudades" onClick={mostrarCiudades} >mostrar ciudades</button>
           </div>
         </section>
+        {showUsuarios && usuariosData && (
+        <section className="seccionUsuarios">
+          <h2>Lista de Usuarios</h2>
+          <ul>
+            {usuariosData.map((usuario, index) => (
+              <li key={index}>
+                {usuario.data.nombre} {usuario.data.apellido}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      {showCiudades && ciudadesData &&(
+        <section className="seccionCiudades">
+          <h2>Lista de Ciudades</h2>
+          <ul>
+            {ciudadesData.map((ciudad, index) => (
+              <li key={index}>
+                {ciudad.id} {ciudad.data.cod_postal}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       </div>
     );
 }

@@ -20,14 +20,16 @@
   justify-content: center;
 }
 
-.cambioBoton{
-  margin-inline: 1rem;
-  border-radius: 5px;
-  background: none;
+.seccionUsuarios{
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  border: 1px solid red;
 }
 
-.cambioFuente{
-  margin-inline: 1rem;
-  border-radius: 5px;
-  background: none;
+.seccionCiudades{
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  border: 1px solid red;
 }
