@@ -1,27 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import React, { useState } from 'react'
 import './App.css';
 
-import {db} from './firebase_setup/firebase';
+import  useCollectionData  from './firebase_setup/useCollectionData';
+
 const App = () => {
   const [buttonColor, setButtonColor] = useState('blue')
   const [buttonFuente, setButtonFuente] = useState('roboto')
-  let auxUsuarios = []
-  const [usuarios, setUsuarios] = useState(auxUsuarios)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const querySnapshot = await db.collection('usuarios').get();
-      const auxUsuarios = [];
-      querySnapshot.forEach(doc => {
-        auxUsuarios.push(doc.data());
-      });
-      setUsuarios(auxUsuarios);
-    };
-
-    fetchData();
-  }, []);
+  const collectionName = "usuarios"; // Nombre de la colección deseada
+  const usuariosData = useCollectionData(collectionName);
 
   function cambioColor() {
     const newColor = buttonColor === 'blue' ? 'red' : 'blue';
@@ -34,7 +20,7 @@ const App = () => {
   }
 
   
-    console.log("USUARIOS",usuarios)
+    console.log("usuarios",usuariosData)
 
 
     return (
