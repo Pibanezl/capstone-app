@@ -23,13 +23,25 @@
 .seccionUsuarios{
   position: absolute;
   top: 50%;
-  left: 0%;
-  border: 1px solid red;
+  left: 10%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: .5rem;
+  padding: 1rem;
+  transform: translate(0, -50%);
 }
 
 .seccionCiudades{
   position: absolute;
   top: 50%;
-  right: 0%;
-  border: 1px solid red;
+  right: 10%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: .5rem;
+  padding: 1rem;
+  transform: translate(0, -50%);
+}
+
+.loading{
+  margin-block: .5rem;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import './App.css';
+import Loading from 'react-loading';
 
 import  useCollectionData  from './firebase_setup/useCollectionData';
-import CRUDComponent from './components/crud'; 
+import UserCrud from './firebase_setup/crud';
 const App = () => {
   const collectionUsuarios = "usuarios"; // Nombre de la colección deseada
   const collectionCiudades = "ciudades"; // Nombre de la colección deseada
@@ -35,12 +36,15 @@ const App = () => {
             <button data-testid="mostrarCiudades" className="mostrarCiudades" id="mostrarCiudades" onClick={mostrarCiudades} >mostrar ciudades</button>
           </div>
         </section>
-        {showUsuarios && usuariosData && (
+        {showUsuarios && (
         <section className="seccionUsuarios">
-          <h2>Lista de Usuarios</h2>
-          <CRUDComponent collectionName="usuarios" />
-        </section>
-            )}
+        {usuariosData ? (
+          <UserCrud />
+        ) : (
+          <Loading type="spin" color="#000000" height={50} width={50} />
+        )}
+      </section>
+      )}
       {showCiudades && ciudadesData &&(
         <section className="seccionCiudades">
           <h2>Lista de Ciudades</h2>
