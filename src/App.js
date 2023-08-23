@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './App.css';
 
 import  useCollectionData  from './firebase_setup/useCollectionData';
-
+import CRUDComponent from './components/crud'; 
 const App = () => {
   const collectionUsuarios = "usuarios"; // Nombre de la colección deseada
   const collectionCiudades = "ciudades"; // Nombre de la colección deseada
@@ -38,27 +38,14 @@ const App = () => {
         {showUsuarios && usuariosData && (
         <section className="seccionUsuarios">
           <h2>Lista de Usuarios</h2>
-          <ul>
-            {usuariosData.map((usuario, index) => (
-              <li key={index}>
-                {usuario.data.nombre} {usuario.data.apellido}
-              </li>
-            ))}
-          </ul>
+          <CRUDComponent collectionName="usuarios" />
         </section>
-      )}
+            )}
       {showCiudades && ciudadesData &&(
         <section className="seccionCiudades">
           <h2>Lista de Ciudades</h2>
-          <ul>
-            {ciudadesData.map((ciudad, index) => (
-              <li key={index}>
-                {ciudad.id} {ciudad.data.cod_postal}
-              </li>
-            ))}
-          </ul>
         </section>
-      )}
+            )}
       </div>
     );
 }
