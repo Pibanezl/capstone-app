@@ -48,6 +48,13 @@ const App = () => {
       {showCiudades && ciudadesData &&(
         <section className="seccionCiudades">
           <h2>Lista de Ciudades</h2>
+          <ul>
+            {ciudadesData.map((ciudad, index) => (
+              <li key={index}>
+                {ciudad.id} {ciudad.data.cod_postal}
+              </li>
+            ))}
+          </ul>
         </section>
             )}
       </div>
