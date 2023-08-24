@@ -11,7 +11,7 @@ test('click en "Mostrar Usuarios" despliega la vista de la sección', () => {
   expect(queryByText('Administración de Usuarios')).toBeInTheDocument();
 });
 
-test('click en "Mostrar Ciudades" despliega la vista de la sección', () => {
+test('click en "Mostrar Ciudades" Despliega la vista de la sección', () => {
   const { getByTestId, queryByText } = render(<App />);
   const button = getByTestId('mostrarCiudades');
 
