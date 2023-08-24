@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('clicking "Mostrar Usuarios" button toggles user section', () => {
+test('click en "Mostrar Usuarios" despliega la vista de la sección', () => {
   const { getByTestId, queryByText } = render(<App />);
   const button = getByTestId('mostrarUsuarios');
 
@@ -11,7 +11,7 @@ test('clicking "Mostrar Usuarios" button toggles user section', () => {
   expect(queryByText('Administración de Usuarios')).toBeInTheDocument();
 });
 
-test('clicking "Mostrar Ciudades" button toggles city section', () => {
+test('click en "Mostrar Ciudades" despliega la vista de la sección', () => {
   const { getByTestId, queryByText } = render(<App />);
   const button = getByTestId('mostrarCiudades');
 
