@@ -28,7 +28,7 @@ const App = () => {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Portafolio de Títuloooooo</h1>
+          <h1 style="color: red;">Portafolio de Título</h1>
         </header>
         <section className="seccionBotones">
           <div className="contenedorBotones">
