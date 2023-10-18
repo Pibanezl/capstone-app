@@ -3,7 +3,7 @@ import AdminView from "../components/AdminView";
 import UserView from "../components/UserView";
 import firebaseApp from "../firebase_setup/firebase"
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore } from 'firebase/firestore';
+//import { getFirestore } from 'firebase/firestore';
 const auth = getAuth(firebaseApp);
 function Home({ user }) {
   return (
