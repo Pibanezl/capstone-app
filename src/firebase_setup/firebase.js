@@ -19,6 +19,21 @@ const firebaseConfig = {
   measurementId: "G-PJ5GWFV3NV"
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-export const db = firebase.firestore() 
+// Configura Firebase para usar los emuladores en entorno de pruebas
+/*if (process.env.NODE_ENV === 'test') {
+  // Reemplaza con los valores correctos para tus emuladores
+  const authEmulatorUrl = 'http://localhost:9099';
+  const firestoreEmulatorHost = 'localhost';
+  const firestoreEmulatorPort = 8080;
+
+  // Activa los emuladores
+  firebaseApp.auth().useEmulator(authEmulatorUrl);
+  firebaseApp.firestore().settings({
+    host: `${firestoreEmulatorHost}:${firestoreEmulatorPort}`,
+    ssl: false, // Opcional, dependiendo de tu configuración de emuladores
+  });
+}*/
+
+export default firebaseApp;
