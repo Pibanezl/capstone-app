@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import Home from "./screens/Home";
 import Login from "./screens/Login";
@@ -14,14 +14,14 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [authLoaded, setAuthLoaded] = useState(false);
 
-  async function getRol(uid) {
-    const docuRef = doc(firestore, `usuarios/${uid}`);
-    const docuCifrada = await getDoc(docuRef);
-    const infoFinal = docuCifrada.data().rol;
-    return infoFinal;
-  }
+  const setUserWithFirebaseAndRol = useCallback((usuarioFirebase) => {
+    const getRol = async (uid) => {
+      const docuRef = doc(firestore, `usuarios/${uid}`);
+      const docuCifrada = await getDoc(docuRef);
+      const infoFinal = docuCifrada.data().rol;
+      return infoFinal;
+    };
 
-  function setUserWithFirebaseAndRol(usuarioFirebase) {
     getRol(usuarioFirebase.uid).then((rol) => {
       const userData = {
         uid: usuarioFirebase.uid,
@@ -32,7 +32,7 @@ const App = () => {
       setAuthLoaded(true);
       console.log("userData:", userData);
     });
-  }
+  }, [firestore, setUser, setAuthLoaded]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (usuarioFirebase) => {
@@ -45,13 +45,12 @@ const App = () => {
         setAuthLoaded(true);
       }
       console.log("Usuario Firebase:", usuarioFirebase);
-    });
+    }, [auth, user, setUserWithFirebaseAndRol]);
 
     return () => unsubscribe();
-  }, [auth, user]);
+  }, [auth, user, setUserWithFirebaseAndRol]);
 
   if (!authLoaded) {
-    // Mientras se verifica la autenticación, muestra "Cargando..."
     return (
       <div className="App">
         <header className="App-header">
@@ -64,7 +63,6 @@ const App = () => {
   }
 
   if (user === null) {
-    // Muestra el componente de Login cuando user es null
     return (
       <div className="App">
         <header className="App-header">
@@ -76,7 +74,6 @@ const App = () => {
     );
   }
 
-  // Cuando user no es null y la autenticación ha cargado, se muestra el componente Home
   return (
     <div className="App">
       <header className="App-header">
