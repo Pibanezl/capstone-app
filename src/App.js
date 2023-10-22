@@ -7,7 +7,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import firebaseApp from './firebase_setup/firebase'; 
-
+import DropdownMenu from './components/dropdownProfile';
 const App = () => {
   const auth = getAuth(firebaseApp);
   const firestore = getFirestore(firebaseApp);
@@ -54,7 +54,9 @@ const App = () => {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Portafolio de Título</h1>
+          <h1 className="Title-header">Portafolio de Título</h1>
+          <DropdownMenu/>
+          <button>dropdown</button>
         </header>
         <p>Cargando...</p>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
@@ -66,9 +68,11 @@ const App = () => {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Portafolio de Título</h1>
+          <h1 className="Title-header">Portafolio de Título</h1>
+          <DropdownMenu/>
         </header>
         <Login setUser={setUser} />
+        
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
       </div>
     );
@@ -77,7 +81,8 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Portafolio de Título</h1>
+        <h1 className="Title-header">Portafolio de Título</h1>
+        <DropdownMenu/>
       </header>
       <Home user={user} />
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
