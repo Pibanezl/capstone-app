@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DropdownProfile from './dropdownProfile';
 import DropdownMenu from './dropdownMenu';
 import { Link } from 'react-router-dom';

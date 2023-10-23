@@ -32,7 +32,7 @@ const DropdownMenuLeft = ({ user }) => {
     return (
         <div className="dropdown-container">
             <button className="round-button-menu" onClick={toggleDropdown}>
-                <img className="img-button-menu" src="https://cdn-icons-png.flaticon.com/512/8695/8695151.png"></img>
+                <img className="img-button-menu" src="https://cdn-icons-png.flaticon.com/512/8695/8695151.png" alt="menu"></img>
             </button>
             {isDropdownOpen && (
                 <div className="dropdown-content">
