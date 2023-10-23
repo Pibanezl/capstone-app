@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Outlet, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./screens/Home";
-import Login from "./screens/Login";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { ToastContainer } from 'react-toastify';
@@ -14,7 +13,6 @@ const App = () => {
   const auth = getAuth(firebaseApp);
   const firestore = getFirestore(firebaseApp);
   const [user, setUser] = useState(null);
-  const [authLoaded, setAuthLoaded] = useState(false);
 
   const setUserWithFirebaseAndRol = useCallback((usuarioFirebase) => {
     const getRol = async (uid) => {
@@ -31,10 +29,9 @@ const App = () => {
         rol: rol,
       };
       setUser(userData);
-      setAuthLoaded(true);
       console.log("userData:", userData);
     });
-  }, [firestore, setUser, setAuthLoaded]);
+  }, [firestore, setUser]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (usuarioFirebase) => {
@@ -44,7 +41,6 @@ const App = () => {
         }
       } else {
         setUser(null);
-        setAuthLoaded(true);
       }
       console.log("Usuario Firebase:", usuarioFirebase);
     }, [auth, user, setUserWithFirebaseAndRol]);

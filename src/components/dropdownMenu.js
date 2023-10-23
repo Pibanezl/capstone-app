@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/sass/DropdownMenu.scss';
-import firebaseApp from "../firebase_setup/firebase"
-import { getAuth, signOut } from "firebase/auth";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const DropdownMenuLeft = ({ user }) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const auth = getAuth(firebaseApp);
 
     const toggleDropdown = () => {
         setDropdownOpen(!isDropdownOpen);
@@ -28,16 +25,6 @@ const DropdownMenuLeft = ({ user }) => {
         } else {
         }
 
-    };
-
-    const userNotNull = (text) => {
-        if (text === "Dashboard") {
-            
-        } else if (text === "Incidencia") {
-            
-        } else {
-
-        }
     };
 
 
