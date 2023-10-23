@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import firebaseApp from './firebase_setup/firebase'; 
 import Header from './components/header'
 import IncidenciaForm from "./components/create-incident"
+import Dashboard from './components/dashboard';
 const App = () => {
   const auth = getAuth(firebaseApp);
   const firestore = getFirestore(firebaseApp);
@@ -55,6 +56,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home user={user} />} />
           <Route path="/form-incidencia" element={<IncidenciaForm />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           {/* Otras rutas */}
         </Routes>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />

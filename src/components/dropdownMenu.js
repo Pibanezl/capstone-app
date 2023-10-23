@@ -38,7 +38,7 @@ const DropdownMenuLeft = ({ user }) => {
                 <div className="dropdown-content">
                     {user != null && isDropdownOpen ? (
                         <div className="container-menu">
-                            <a href="/" className="option-button-menu">
+                            <a href="/dashboard" className="option-button-menu">
                                 <span className="option-button-menu-text">Dashboard</span>
                             </a>
                             <a href="/form-incidencia" className="option-button-menu">
