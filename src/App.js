@@ -55,8 +55,8 @@ const App = () => {
         <Header user={user}/>
         <Routes>
           <Route path="/" element={<Home user={user} />} />
-          <Route path="/form-incidencia" element={<IncidenciaForm />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="form-incidencia" element={<IncidenciaForm />} />
+          <Route path="dashboard" element={<Dashboard />} />
           {/* Otras rutas */}
         </Routes>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
