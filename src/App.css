@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: white;
   display: flex;
@@ -49,4 +49,79 @@
   margin-block: .5rem;
   margin-left: 50%;
   transform: translate(-50%, 0);
+}
+
+.Button-profile{
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.round-button-menu{
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.img-button-menu{
+  width: 40px;
+    height: 40px;
+}
+.Button-profile-close{
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 1rem;
+  float: inline-end;
+}
+.img-button-profile-close{
+  width: 25px;
+    height: 25px;
+}
+.ReactModalPortal{
+  width: 15rem;
+    position: absolute;
+    right: 0rem;
+}
+
+.ReactModalPortal{
+  box-shadow: 0 0 10px;
+}
+
+.Label-login{
+  color:black;
+  font-size: 1rem;
+}
+
+.Title-login{
+  color: black;
+  font-size: 1rem;
+}
+
+.option-button-menu{
+  width: 100%;
+  color: black;
+  font-size: 1rem;
+  border-bottom: 1px solid #00000021;
+  height: 2rem;
+  padding: 1rem 0rem 1rem 0rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.option-button-menu-text{
+
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Outlet, Routes } from 'react-router-dom';
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -7,7 +8,8 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import firebaseApp from './firebase_setup/firebase'; 
-import DropdownMenu from './components/dropdownProfile';
+import Header from './components/header'
+import IncidenciaForm from "./components/create-incident"
 const App = () => {
   const auth = getAuth(firebaseApp);
   const firestore = getFirestore(firebaseApp);
@@ -50,43 +52,18 @@ const App = () => {
     return () => unsubscribe();
   }, [auth, user, setUserWithFirebaseAndRol]);
 
-  if (!authLoaded) {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="Title-header">Portafolio de Título</h1>
-          <DropdownMenu/>
-          <button>dropdown</button>
-        </header>
-        <p>Cargando...</p>
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
-      </div>
-    );
-  }
-
-  if (user === null) {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="Title-header">Portafolio de Título</h1>
-          <DropdownMenu/>
-        </header>
-        <Login setUser={setUser} />
-        
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
-      </div>
-    );
-  }
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="Title-header">Portafolio de Título</h1>
-        <DropdownMenu/>
-      </header>
-      <Home user={user} />
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
-    </div>
+    <Router>
+      <div className="App">
+        <Header user={user}/>
+        <Routes>
+          <Route path="/" element={<Home user={user} />} />
+          <Route path="/form-incidencia" element={<IncidenciaForm />} />
+          {/* Otras rutas */}
+        </Routes>
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+      </div>
+    </Router>
   );
 }
 

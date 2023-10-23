@@ -17,7 +17,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import PasswordReset from '../components/ResetPass';
-function Login() {
+function Login({ user}) {
   const auth = getAuth(firebaseApp);
   const firestore = firebaseApp.firestore();
   const [isRegistrando, setIsRegistrando] = useState(false);
@@ -59,6 +59,7 @@ function Login() {
       console.log("REGISTRAR USUARIO")
       // registrar
       //setRol(e.target.elements.rol.value)
+      setRol("user")
       registrarUsuario(email, password, rol);
     } else {
       console.log("INICIAR SESION")
@@ -109,28 +110,27 @@ function Login() {
   }
 
   return (
-    <div>
-      <h1>{isRegistrando ? "Regístrate" : "Inicia sesión"}</h1>
+    <div className="Container-login">
+      <h1 className="Title-login">{isRegistrando ? "Regístrate" : "Inicia sesión"}</h1>
 
       <form onSubmit={submitHandler}>
-        <label>
+        <label className="Label-login">
           Correo electrónico:
-          <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+          <input className="Input-login" type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email}/>
         </label>
-
-        <label>
+        <label className="Label-login">
           Contraseña:
-          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
+          <input className="Input-login" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
         </label>
 
-        {isRegistrando ? (
+        {/*{isRegistrando ? (
         <label>
           Rol:
           <select id="rol" onChange={(event) => setRol(event.target.value)} value={rol}>
             <option value="admin">Administrador</option>
             <option value="user">Usuario</option>
           </select>
-        </label>) : null}
+        </label>) : null}*/}
         
         <input
           type="submit"

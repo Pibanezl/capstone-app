@@ -1,0 +1,20 @@
+.ReactModalPortal{
+    width: 5rem;
+}
+.ReactModal__Overlay--after-open{
+    position: fixed !important;
+    left: 3rem !important;
+    top: 2rem !important;
+    background-color: rgb(255 255 255 / 87%);
+    z-index: 999;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 15rem;
+    height: 8rem;
+    text-align: -webkit-center;
+}
+.title-modal-geolocalizacion{
+    font-size: 1rem;
+}
+.button-modal-geolocalizacion{
+    margin: 1rem;
+}
