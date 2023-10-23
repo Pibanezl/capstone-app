@@ -50,7 +50,7 @@ const App = () => {
   }, [auth, user, setUserWithFirebaseAndRol]);
 
   return (
-    <Router>
+    <Router basename="/">
       <div className="App">
         <Header user={user}/>
         <Routes>
