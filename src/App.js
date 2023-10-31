@@ -6,14 +6,16 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import firebaseApp from './firebase_setup/firebase'; 
+//import firebaseApp from './firebase_setup/firebase'; 
+import { firebaseApp } from './firebase_setup/firebase';
 import Header from './components/header'
 import IncidenciaForm from "./components/create-incident"
-import Dashboard from './components/dashboard';
+import Dashboard from './screens/Dashboard';
 const App = () => {
   const auth = getAuth(firebaseApp);
   const firestore = getFirestore(firebaseApp);
   const [user, setUser] = useState(null);
+  
 
   const setUserWithFirebaseAndRol = useCallback((usuarioFirebase) => {
     const getRol = async (uid) => {
@@ -52,10 +54,10 @@ const App = () => {
   return (
     <Router basename="/">
       <div className="App">
-        <Header user={user}/>
+        <Header user={user} />
         <Routes>
           <Route path="/" element={<Home user={user} />} />
-          <Route path="form-incidencia" element={<IncidenciaForm />} />
+          <Route path="form-incidencia" element={<IncidenciaForm user={user} />} />
           <Route path="dashboard" element={<Dashboard />} />
           {/* Otras rutas */}
         </Routes>

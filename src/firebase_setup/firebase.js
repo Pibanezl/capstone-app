@@ -2,7 +2,8 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-
+import 'firebase/compat/storage';
+import { getStorage } from 'firebase/storage';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,7 +21,6 @@ const firebaseConfig = {
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-
 // Configura Firebase para usar los emuladores en entorno de pruebas
 /*if (process.env.NODE_ENV === 'test') {
   // Reemplaza con los valores correctos para tus emuladores
@@ -36,4 +36,4 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
   });
 }*/
 
-export default firebaseApp;
+export { firebaseApp, getStorage };

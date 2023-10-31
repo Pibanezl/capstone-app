@@ -2,7 +2,6 @@ process.env.NODE_ENV = 'test';
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase_setup/firebase';
 import Loading from 'react-loading';
-
 const UserCrud = () => {
   const [loading, setLoading] = useState(true);
   const [usuarios, setUsuarios] = useState([]);

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import firebase from "../firebase_setup/firebase"
 import 'firebase/auth';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { firebaseApp } from '../firebase_setup/firebase';
 function PasswordReset() {
   const [email, setEmail] = useState('');
 
   const handleResetPassword = () => {
-    firebase
+    firebaseApp
       .auth()
       .sendPasswordResetEmail(email)
       .then(() => {
@@ -21,15 +20,16 @@ function PasswordReset() {
   };
 
   return (
-    <div>
-      <h2>Restablecer Contraseña</h2>
+    <div className="Container-login-resetpass">
+      <h1 className="title-resetpass">Restablecer Contraseña</h1>
       <input
         type="email"
         placeholder="Correo Electrónico"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="Input-login-resetpass"
       />
-      <button onClick={handleResetPassword}>Enviar Correo de Restablecimiento</button>
+      <button onClick={handleResetPassword} className="btn-login-resetpass">Restablecer</button>
     </div>
   );
 }

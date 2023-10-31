@@ -1,0 +1,134 @@
+.Container-dashboard {
+    background-color: #1E1F22;
+
+    .Title-dashboard {
+        color: #F2F3F5;
+        font-family: Noto Sans;
+        font-size: 14.7px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 21px;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        /* 142.857% */
+    }
+
+    .Container-incidencias-map {
+        height: 400px;
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin: 0 auto;
+
+        .Container-incidencias {
+            width: 40%;
+            border: 2px solid #ccc;
+            overflow: auto;
+            border-radius: 10px;
+
+            .Container-incidencias-li {
+                width: 95%;
+                height: 100px;
+                display: flex;
+                background-color: #f0f0f0;
+                list-style: none;
+                flex-direction: column;
+                margin: 0.7rem 0rem 0.7rem 0.7rem;
+                background-color: #3E3F44;
+                color: #F2F3F5;
+                border-radius: 5px;
+
+                .titulo-incidencia {
+                    font-size: 1rem;
+                    margin-top: .5rem;
+                    margin-bottom: 0rem;
+                }
+
+                .descripcion-incidencia {
+                    font-size: .7rem;
+                    margin: 0.5rem;
+                }
+
+                .Container-buttons-incidencia {
+                    display: flex;
+                    justify-content: center;
+
+                    .Container-img-incidencia {
+                        margin-right: 1rem;
+
+                        .img-incidencia {
+                            width: 1rem;
+                            height: 1rem;
+                            filter: invert(1);
+                        }
+                    }
+
+                    .btn-ver-incidencia {
+                        font-size: .6rem;
+                    }
+                }
+            }
+        }
+
+        .Container-map {
+            width: 60%;
+            margin-left: 0.7rem;
+            .leaflet-container{
+                height: 100%;
+                border-radius: 10px;
+                .leaflet-control-container{
+                    .leaflet-bottom{
+                        display: none;
+                    }
+                    .leaflet-left{
+                        z-index: 499;
+                    }
+                }
+            }
+        }
+    }
+
+    .Container-incidencias-niveles{
+        background-color: #1E1F22;
+        .Container-grafico-barras{
+            .title-grafico-barras{
+
+            }
+            .recharts-wrapper{
+                
+            }
+        }
+    }
+
+    .Container-incidencias::-webkit-scrollbar {
+        width: 25px;
+        border-radius: 10px;
+    }
+
+    .Container-incidencias::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 10px 10px rgba(0, 128, 0, 0);
+    border: solid 7px transparent;
+    }
+
+    .Container-incidencias::-webkit-scrollbar-track-piece {
+        background-color: #1E1F22;
+        border-radius: 10px;
+    }
+
+    .Container-incidencias::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+    box-shadow: inset 0 0 10px 10px #A7A9B1;
+    border: solid 7px transparent;
+    height: 50px;
+    
+    }
+
+    .Container-incidencias::-webkit-scrollbar-thumb:hover {
+        box-shadow: inset 0 0 10px 10px #6f7075;
+        border: solid 7px transparent;
+        border-radius: 20px;
+        height: 50px;
+    }
+
+
+}

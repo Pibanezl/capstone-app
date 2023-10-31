@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-
 import { db } from './firebase';
 
 const useCollectionData = (collectionName) => {

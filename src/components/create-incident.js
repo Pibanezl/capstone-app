@@ -1,48 +1,108 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
-import '../styles/sass/form-incident.scss';
+import 'firebase/firestore';
+import 'firebase/storage';
+import { GeoPoint } from 'firebase/firestore';
+import { firebaseApp } from '../firebase_setup/firebase';
 
-const IncidenciaForm = () => {
+const IncidenciaForm = ({ user }) => {
+  const db = firebaseApp.firestore();
+  const storage = firebaseApp.storage();
+  const storageRef = storage.ref();
   const [tipoIncidencia, setTipoIncidencia] = useState('academica');
   const [asunto, setAsunto] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [evidencia, setEvidencia] = useState('');
+  const [evidenciaFile, setEvidenciaFile] = useState(null);
+  //const [evidenciaURL, setEvidenciaURL] = useState('');
   const [geolocalizacionActivada, setGeolocalizacionActivada] = useState(false);
   const [showPermissionModal, setShowPermissionModal] = useState(false);
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
 
   const handleEnviarClick = () => {
     if (geolocalizacionActivada) {
-      console.log('Enviando incidencia:', {
-        tipoIncidencia,
-        asunto,
-        descripcion,
-        evidencia,
-      });
+      if (!user || !user.uid) {
+        console.log("USER ERROR",user)
+        toast.error('Usuario no autenticado');
+        return;
+      }
+      if (latitude === undefined || longitude === undefined) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setGeolocalizacionActivada(true);
+            setShowPermissionModal(false);
+            const latitud = position.coords.latitude;
+            const longitud = position.coords.longitude;
+            setLatitude(latitud);
+            setLongitude(longitud);
+            console.log("CREAR GEO",latitud,longitud)
+          },
+          (error) => {
+            toast.error('No se pudo acceder a la geolocalización. Asegúrate de que la geolocalización esté habilitada en tu navegador.');
+            setShowPermissionModal(false);
+          }
+        );
+        return;
+      }
+      const fecha = new Date();
+
+      const ubicacion = new GeoPoint(latitude, longitude);
+
+      const incidenciaData = {
+        titulo: asunto,
+        descripcion: descripcion,
+        fecha: fecha,
+        idEstudiante: user.uid,
+        ubicacion: ubicacion,
+        //evidencia: evidenciaURL,
+        evidencia: "evidenciaURL",
+      };
+
+      const coleccionIncidencia =
+        tipoIncidencia === 'academica' ? 'incidencia-estudiantil' : 'incidencia-comunitaria';
+
+      db.collection(coleccionIncidencia)
+        .add(incidenciaData)
+        .then(() => {
+          setAsunto('');
+          setDescripcion('');
+          setEvidenciaFile(null);
+          //setEvidenciaURL('');
+        })
+        .catch((error) => {
+          console.error('Error al agregar la incidencia:', error);
+        });
     } else {
-      // No se puede enviar la incidencia si la geolocalización no está activada
       setShowPermissionModal(true);
     }
   };
 
   const handleAceptarPermiso = () => {
-    // Cuando el usuario acepta el permiso en el modal
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setGeolocalizacionActivada(true);
-        setShowPermissionModal(false); // Cerrar el modal después de aceptar
+        setShowPermissionModal(false);
+        const latitud = position.coords.latitude;
+        const longitud = position.coords.longitude;
+        setLatitude(latitud);
+        setLongitude(longitud);
+        console.log("CREAR GEO",latitud,longitud)
       },
       (error) => {
-        // Manejar errores, si es necesario
         toast.error('No se pudo acceder a la geolocalización. Asegúrate de que la geolocalización esté habilitada en tu navegador.');
-        setShowPermissionModal(false); // Cerrar el modal en caso de error
+        setShowPermissionModal(false);
       }
     );
   };
 
   const handleCancelarPermiso = () => {
-    // Cuando el usuario cancela el permiso en el modal
     setShowPermissionModal(false);
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setEvidenciaFile(file);
   };
 
   useEffect(() => {
@@ -55,8 +115,7 @@ const IncidenciaForm = () => {
           if (error.code === error.PERMISSION_DENIED) {
             // La geolocalización se denegó, no hagas nada aquí
           } else {
-            // Otro error de geolocalización, si es necesario, maneja el error
-            // toast.error('No se pudo acceder a la geolocalización. Asegúrate de que la geolocalización esté habilitada en tu navegador.');
+            toast.error('No se pudo acceder a la geolocalización. Asegúrate de que la geolocalización esté habilitada en tu navegador.');
           }
         }
       );
@@ -64,6 +123,18 @@ const IncidenciaForm = () => {
       toast.error('Tu navegador no admite geolocalización.');
     }
   }, []);
+
+  useEffect(() => {/*
+    if (evidenciaFile) {
+      const evidenciaRef = storageRef.child(evidenciaFile.name);
+
+      evidenciaRef.put(evidenciaFile).then((snapshot) => {
+        snapshot.ref.getDownloadURL().then((downloadURL) => {
+          setEvidenciaURL(downloadURL);
+        });
+      });
+    }*/
+  }, [evidenciaFile, storageRef]);
 
   return (
     <div>
@@ -101,8 +172,7 @@ const IncidenciaForm = () => {
         <input
           type="file"
           id="evidencia"
-          value={evidencia}
-          onChange={(e) => setEvidencia(e.target.value)}
+          onChange={handleFileChange}
         />
       </div>
       <div>
