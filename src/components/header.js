@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import logo from '../images/header.png';
 
 const Header = ({ user }) => {
-  const [headerHeight, setHeaderHeight] = useState(84); // Altura inicial del header
-  const maxHeight = 92; // Altura máxima del header
+  const [headerHeight, setHeaderHeight] = useState(115); // Altura inicial del header
+  const maxHeight = 124; // Altura máxima del header
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +19,7 @@ const Header = ({ user }) => {
           setHeaderHeight(maxHeight);
         }
       } else {
-        setHeaderHeight(84); // Restaura la altura inicial
+        setHeaderHeight(115); // Restaura la altura inicial
       }
     };
 

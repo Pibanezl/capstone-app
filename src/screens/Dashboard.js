@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { firebaseApp, getStorage } from '../firebase_setup/firebase';
+import { firebaseApp } from '../firebase_setup/firebase';
 import '../styles/sass/dashboard.scss';
 import { MapContainer, Popup, TileLayer, Marker } from 'react-leaflet';
 import { Icon } from "leaflet";
-import icon1 from '../images/punto1.png';
-import icon2 from '../images/punto2.png';
 import GraficoDeBarras from "../components/grafic-bar";
 const Dashboard = ({ user }) => {
     const db = firebaseApp.firestore();
@@ -142,7 +140,7 @@ const Dashboard = ({ user }) => {
                             <p className="descripcion-incidencia">Descripción: {incidencia.descripcion}</p>
                             <div className="Container-buttons-incidencia">
                                 <a className="Container-img-incidencia" href={incidencia.evidencia}>
-                                    <img className="img-incidencia" src="https://cdn-icons-png.flaticon.com/512/4303/4303969.png"></img>
+                                    <img className="img-incidencia" src="https://cdn-icons-png.flaticon.com/512/4303/4303969.png" alt="incidencia"></img>
                                 </a>
                                 <button className="btn-ver-incidencia" onClick={() => handleIncidenceChange(incidencia)}>Ver mapa</button>
                             </div>
