@@ -28,39 +28,41 @@ const Dashboard = ({ user }) => {
     };
 
     // Función para obtener los datos de incidencias agrupados por nivel
-    const obtenerIncidenciasAgrupadasPorNivel = async (incidencias) => {
-        console.log("ENTRO NIVELES")
-        const niveles = {
-            '1° Básico': 0,
-            '2° Básico': 0,
-            '3° Básico': 0,
-            '4° Básico': 0,
-            '5° Básico': 0,
-            '6° Básico': 0,
-            '7° Básico': 0,
-            '8° Básico': 0,
-            '1° Medio': 0,
-            '2° Medio': 0,
-            '3° Medio': 0,
-            '4° Medio': 0
-        };
-
-        for (const incidencia of incidencias) {
-            try {
-                const estudiante = await consultarDocumentoPorID('estudiantes', incidencia.idEstudiante);
-                console.log("ESTUDIANTE ID", estudiante)
-                if (estudiante && niveles[estudiante.curso] !== undefined) {
-                    niveles[estudiante.curso]++;
-                }
-            } catch (error) {
-                console.error('Error al procesar una incidencia:', error);
-            }
-        }
-
-        return niveles;
-    };
+    
 
     useEffect(() => {
+        const obtenerIncidenciasAgrupadasPorNivel = async (incidencias) => {
+            console.log("ENTRO NIVELES")
+            const niveles = {
+                '1° Básico': 0,
+                '2° Básico': 0,
+                '3° Básico': 0,
+                '4° Básico': 0,
+                '5° Básico': 0,
+                '6° Básico': 0,
+                '7° Básico': 0,
+                '8° Básico': 0,
+                '1° Medio': 0,
+                '2° Medio': 0,
+                '3° Medio': 0,
+                '4° Medio': 0
+            };
+    
+            for (const incidencia of incidencias) {
+                try {
+                    const estudiante = await consultarDocumentoPorID('estudiantes', incidencia.idEstudiante);
+                    console.log("ESTUDIANTE ID", estudiante)
+                    if (estudiante && niveles[estudiante.curso] !== undefined) {
+                        niveles[estudiante.curso]++;
+                    }
+                } catch (error) {
+                    console.error('Error al procesar una incidencia:', error);
+                }
+            }
+    
+            return niveles;
+        };
+
         const fetchData = async () => {
             // Obtén los datos de incidencias
             const incidenciasData = await db.collection("incidencia-estudiantil").get()
@@ -88,7 +90,7 @@ const Dashboard = ({ user }) => {
         };
     
         fetchData();
-    }, []);
+    }, [db]);
 
     const handleStateChange = (incidencia) => {
         setActiveIncidencia(incidencia)

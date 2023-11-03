@@ -42,21 +42,21 @@ const DropdownMenuLeft = ({ user }) => {
                     {user != null && isDropdownOpen ? (
                         <div className="container-menu">
                             <a href="/dashboard" className="option-button-menu">
-                                <img className="img-button-menu" src={dashboardIcon}></img>
+                                <img className="img-button-menu" src={dashboardIcon} alt="icono-menu"></img>
                                 <span className="option-button-menu-text">Dashboard</span>
                             </a>
                             <a href="/form-incidencia" className="option-button-menu">
-                            <img className="img-button-menu-incidencia" src={incidenciaIcon}></img>
+                            <img className="img-button-menu-incidencia" src={incidenciaIcon} alt="icono-menu"></img>
                                 <span className="option-button-menu-text">Crear incidencia</span>
                             </a>
                         </div>) :
                         (<div className="container-menu">
                             <div className="option-button-menu" onClick={() => handleUserNull("Dashboard")}>
-                                <img className="img-button-menu" src={dashboardIcon}></img>
+                                <img className="img-button-menu" src={dashboardIcon} alt="icono-menu"></img>
                                 <span className="option-button-menu-text">Dashboard</span>
                             </div>
                             <div className="option-button-menu" onClick={() => handleUserNull("Incidencia")}>
-                            <img className="img-button-menu-incidencia" src={incidenciaIcon}></img>
+                            <img className="img-button-menu-incidencia" src={incidenciaIcon} alt="icono-menu"></img>
                                 <span className="option-button-menu-text">Crear incidencia</span>
                             </div>
                         </div>)}

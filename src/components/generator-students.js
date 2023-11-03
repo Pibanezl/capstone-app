@@ -25,7 +25,7 @@ const StudentGenerator = ({ numStudents }) => {
   ];
 
   const nombresColegios = colegios.map(colegio => colegio["NOMBRE ESTABLECIMIENTO"]);
-
+console.log("DATA ESTUDIANTES",students)
   const generateRandomStudent = () => {
     const indiceAleatorio = Math.floor(Math.random() * cursos.length);
     const cursoAleatorio = cursos[indiceAleatorio];
@@ -73,7 +73,7 @@ const StudentGenerator = ({ numStudents }) => {
       .catch((error) => {
         console.error("Error al obtener los datos de estudiantes:", error);
       });
-  }, []); 
+  }, [db]); 
 
   return (
     <div>

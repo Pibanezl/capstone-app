@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { firebaseApp, getStorage } from '../firebase_setup/firebase';
+import { firebaseApp } from '../firebase_setup/firebase';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -22,13 +22,13 @@ import Select from 'react-select';
 function Login({ user }) {
   const auth = getAuth(firebaseApp);
   const firestore = firebaseApp.firestore();
-  const [isRegistrando, setIsRegistrando] = useState(false);
+  //const [isRegistrando, setIsRegistrando] = useState(false);
   const [switchPass, setSwitchPass] = useState(false);
   const [switchRegistrar, setSwitchRegistrar] = useState(false);
   const [switchIsStudent, setSwitchIsStudent] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rol, setRol] = useState("admin");
+  let rol = "admin"
   const [estudiante, setEstudiante] = useState({
     nombre: '',
     apellido: '',
