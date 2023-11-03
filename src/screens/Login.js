@@ -187,7 +187,7 @@ function Login({ user }) {
 
       {switchRegistrar ? (
         <div className="Container-is-student">
-          <a className="text-is-student">¿Es estudiante?</a>
+          <p className="text-is-student">¿Es estudiante?</p>
           <input type="checkbox" id="esEstudiante" className="checkbox-is-student" onClick={() => setSwitchIsStudent(!switchIsStudent)} value={switchIsStudent} />
         </div>
       ) : null}

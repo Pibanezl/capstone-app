@@ -2,8 +2,8 @@ import React from "react";
 import AdminView from "../components/AdminView";
 import UserView from "../components/UserView";
 import BannerPrincipal from '../components/banner-principal';
-import StudentGenerator from "../components/generator-students"
-import StudentGeneratorIncident from "../components/generator-incident-student"
+/*import StudentGenerator from "../components/generator-students"
+import StudentGeneratorIncident from "../components/generator-incident-student"*/
 function Home({ user }) {
 
   return (

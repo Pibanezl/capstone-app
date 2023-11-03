@@ -163,7 +163,7 @@ const StudentGeneratorIncident = ({ numStudents, user }) => {
             .catch((error) => {
                 console.error("Error al obtener los datos de estudiantes:", error);
             });
-    }, []);
+    }, [db]);
     return (
         <div>
             <button onClick={addStudentToFirestore}>Agregar Estudiantes a Firebase admin</button>
