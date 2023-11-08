@@ -15,6 +15,22 @@ const Dashboard = ({ user }) => {
         iconSize: [25, 25]
     });
 
+    const [titleFilter, setTitleFilter] = useState('');
+    const [descriptionFilter, setDescriptionFilter] = useState('');
+  
+    const filteredIncidents = incidencias.filter((incidencia) => {
+        //console.log("Incidencia",incidencia)
+        let titleMatch
+        let descriptionMatch
+        if(incidencia.titulo !== undefined && incidencia.descripcion !== undefined){
+            titleMatch = incidencia.titulo.toLowerCase().includes(titleFilter.toLowerCase());
+            descriptionMatch = incidencia.descripcion.toLowerCase().includes(descriptionFilter.toLowerCase());   
+        }else{
+            console.log("ERROR UNDEFINED")
+        }
+        return titleMatch && descriptionMatch;
+    });
+
     const consultarDocumentoPorID = async (coleccion, documentoId) => {
         const db = firebaseApp.firestore(); // Reemplaza 'firebaseApp' con tu instancia de Firebase
 
@@ -28,7 +44,7 @@ const Dashboard = ({ user }) => {
     };
 
     // Función para obtener los datos de incidencias agrupados por nivel
-    
+
 
     useEffect(() => {
         const obtenerIncidenciasAgrupadasPorNivel = async (incidencias) => {
@@ -47,11 +63,11 @@ const Dashboard = ({ user }) => {
                 '3° Medio': 0,
                 '4° Medio': 0
             };
-    
+
             for (const incidencia of incidencias) {
                 try {
                     const estudiante = await consultarDocumentoPorID('estudiantes', incidencia.idEstudiante);
-                    console.log("ESTUDIANTE ID", estudiante)
+                    //console.log("ESTUDIANTE ID", estudiante)
                     if (estudiante && niveles[estudiante.curso] !== undefined) {
                         niveles[estudiante.curso]++;
                     }
@@ -59,7 +75,7 @@ const Dashboard = ({ user }) => {
                     console.error('Error al procesar una incidencia:', error);
                 }
             }
-    
+
             return niveles;
         };
 
@@ -82,17 +98,18 @@ const Dashboard = ({ user }) => {
                 .catch((error) => {
                     console.error("Error al obtener los datos de incidencias estudiantiles:", error);
                 });
-    
+
             // Calcula las incidencias agrupadas por nivel
             const niveles = await obtenerIncidenciasAgrupadasPorNivel(incidenciasData);
             console.log('Incidencias agrupadas por nivel:', niveles);
             setIncidenciasNiveles(niveles);
         };
-    
+
         fetchData();
     }, [db]);
 
     const handleStateChange = (incidencia) => {
+        console.log("ENTRO MARCADOR")
         setActiveIncidencia(incidencia)
     };
 
@@ -129,25 +146,63 @@ const Dashboard = ({ user }) => {
     }*/
     // Función para consultar un registro por su ID de documento
 
+    const niveles2 = {
+        '1° Básico': 20,
+        '2° Básico': 29,
+        '3° Básico': 14,
+        '4° Básico': 11,
+        '5° Básico': 7,
+        '6° Básico': 13,
+        '7° Básico': 16,
+        '8° Básico': 5,
+        '1° Medio': 12,
+        '2° Medio': 17,
+        '3° Medio': 12,
+        '4° Medio': 16
+    };
 
+    console.log(incidenciasNiveles)
 
     return (
         <div className="Container-dashboard">
             <h1 className="Title-dashboard">INCIDENCIAS ESTUDIANTILES</h1>
             <div className="Container-incidencias-map">
                 <div className="Container-incidencias">
-                    {incidencias.map((incidencia, index) => (
-                        <li className="Container-incidencias-li" key={index}>
-                            <h2 className="titulo-incidencia">Asunto: {incidencia.titulo}</h2>
-                            <p className="descripcion-incidencia">Descripción: {incidencia.descripcion}</p>
-                            <div className="Container-buttons-incidencia">
-                                <a className="Container-img-incidencia" href={incidencia.evidencia}>
-                                    <img className="img-incidencia" src="https://cdn-icons-png.flaticon.com/512/4303/4303969.png" alt="incidencia"></img>
-                                </a>
-                                <button className="btn-ver-incidencia" onClick={() => handleIncidenceChange(incidencia)}>Ver mapa</button>
-                            </div>
-                        </li>
-                    ))}
+                    <div className="Container-incidencias-filtro">
+                        <div className="title-incidencias-filtro">
+                            <h2 className="title-incidencias-filtro">Filtros incidencias</h2>
+                        </div>
+                        <div className="body-incidencias-filtro">
+                        <input
+                            className="input-incidencias-filtro"
+                            type="text"
+                            placeholder="Filtrar por asunto"
+                            value={titleFilter}
+                            onChange={(e) => setTitleFilter(e.target.value)}
+                        />
+                        <input
+                        className="input-incidencias-filtro"
+                            type="text"
+                            placeholder="Filtrar por descripción"
+                            value={descriptionFilter}
+                            onChange={(e) => setDescriptionFilter(e.target.value)}
+                        />
+                        </div>
+                    </div>
+                    <div className="Container-incidencias-lista">
+                        {filteredIncidents.map((incidencia, index) => (
+                            <li className="Container-incidencias-li" key={index}>
+                                <h2 className="titulo-incidencia">Asunto: {incidencia.titulo}</h2>
+                                <p className="descripcion-incidencia">Descripción: {incidencia.descripcion}</p>
+                                <div className="Container-buttons-incidencia">
+                                    <a className="Container-img-incidencia" href={incidencia.evidencia}>
+                                        <img className="img-incidencia" src="https://cdn-icons-png.flaticon.com/512/4303/4303969.png" alt="incidencia"></img>
+                                    </a>
+                                    <button className="btn-ver-incidencia" onClick={() => handleIncidenceChange(incidencia)}>Ver mapa</button>
+                                </div>
+                            </li>
+                        ))}
+                    </div>
                 </div>
                 <div className="Container-map">
                     <MapContainer key={mapCenter.lat + mapCenter.lng} center={mapCenter} zoom={13}>
@@ -156,11 +211,12 @@ const Dashboard = ({ user }) => {
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         />
                         {incidencias.map(incidencia => (
+
                             <Marker
                                 key={incidencia.id}
                                 position={[incidencia.ubicacion._lat, incidencia.ubicacion._long]}
                                 icon={icon}
-                                onClick={handleStateChange}
+                                onClick={() => handleStateChange(incidencia)}
                             />
                         ))}
 
@@ -183,8 +239,8 @@ const Dashboard = ({ user }) => {
                 </div>
             </div>
             <div className="Container-incidencias-niveles">
-                {Object.values(incidenciasNiveles).some((count) => count !== 0) && (
-                    <GraficoDeBarras datosPorNivel={incidenciasNiveles} />
+                {Object.values(niveles2).some((count) => count !== 0) && (
+                    <GraficoDeBarras datosPorNivel={niveles2} />
                 )}
             </div>
         </div>);

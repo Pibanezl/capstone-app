@@ -26,45 +26,78 @@
             overflow: auto;
             border-radius: 10px;
 
-            .Container-incidencias-li {
-                width: 95%;
-                height: 100px;
-                display: flex;
-                background-color: #f0f0f0;
-                list-style: none;
-                flex-direction: column;
-                margin: 0.7rem 0rem 0.7rem 0.7rem;
-                background-color: #3E3F44;
-                color: #F2F3F5;
-                border-radius: 5px;
-
-                .titulo-incidencia {
-                    font-size: 1rem;
-                    margin-top: .5rem;
-                    margin-bottom: 0rem;
+            .Container-incidencias-filtro {
+                margin-bottom: 2rem;
+                .title-incidencias-filtro {
+                    color: white;
+                    margin: 1rem;
                 }
 
-                .descripcion-incidencia {
-                    font-size: .7rem;
-                    margin: 0.5rem;
-                }
-
-                .Container-buttons-incidencia {
+                .body-incidencias-filtro {
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-around;
 
-                    .Container-img-incidencia {
-                        margin-right: 1rem;
+                    .input-incidencias-filtro {
+                        background-size: 0.7rem;
+                        background-position-y: center;
+                        background-position-x: 0.5rem;
+                        padding-left: 1.5rem;
+                        padding-right: -1.5rem;
+                        background-color: #777;
+                        filter: invert(100%);
+                        border: none;
+                        border-radius: 0.3rem;
+                        padding-block: 0.5rem rem;
+                    }
+                    .input-incidencias-filtro::placeholder {
+                        color: white;
+                        filter: invert(100%);
+                    }
+                    
+                }
+            }
 
-                        .img-incidencia {
-                            width: 1rem;
-                            height: 1rem;
-                            filter: invert(1);
-                        }
+            .Container-incidencias-lista {
+                .Container-incidencias-li {
+                    width: 95%;
+                    height: 100px;
+                    display: flex;
+                    background-color: #f0f0f0;
+                    list-style: none;
+                    flex-direction: column;
+                    margin: 0.7rem 0rem 0.7rem 0.7rem;
+                    background-color: #3E3F44;
+                    color: #F2F3F5;
+                    border-radius: 5px;
+
+                    .titulo-incidencia {
+                        font-size: 1rem;
+                        margin-top: .5rem;
+                        margin-bottom: 0rem;
                     }
 
-                    .btn-ver-incidencia {
-                        font-size: .6rem;
+                    .descripcion-incidencia {
+                        font-size: .7rem;
+                        margin: 0.5rem;
+                    }
+
+                    .Container-buttons-incidencia {
+                        display: flex;
+                        justify-content: center;
+
+                        .Container-img-incidencia {
+                            margin-right: 1rem;
+
+                            .img-incidencia {
+                                width: 1rem;
+                                height: 1rem;
+                                filter: invert(1);
+                            }
+                        }
+
+                        .btn-ver-incidencia {
+                            font-size: .6rem;
+                        }
                     }
                 }
             }
@@ -73,14 +106,17 @@
         .Container-map {
             width: 60%;
             margin-left: 0.7rem;
-            .leaflet-container{
+
+            .leaflet-container {
                 height: 100%;
                 border-radius: 10px;
-                .leaflet-control-container{
-                    .leaflet-bottom{
+
+                .leaflet-control-container {
+                    .leaflet-bottom {
                         display: none;
                     }
-                    .leaflet-left{
+
+                    .leaflet-left {
                         z-index: 499;
                     }
                 }
@@ -88,15 +124,13 @@
         }
     }
 
-    .Container-incidencias-niveles{
+    .Container-incidencias-niveles {
         background-color: #1E1F22;
-        .Container-grafico-barras{
-            .title-grafico-barras{
 
-            }
-            .recharts-wrapper{
-                
-            }
+        .Container-grafico-barras {
+            .title-grafico-barras {}
+
+            .recharts-wrapper {}
         }
     }
 
@@ -107,7 +141,7 @@
 
     .Container-incidencias::-webkit-scrollbar-track {
         box-shadow: inset 0 0 10px 10px rgba(0, 128, 0, 0);
-    border: solid 7px transparent;
+        border: solid 7px transparent;
     }
 
     .Container-incidencias::-webkit-scrollbar-track-piece {
@@ -117,10 +151,10 @@
 
     .Container-incidencias::-webkit-scrollbar-thumb {
         border-radius: 20px;
-    box-shadow: inset 0 0 10px 10px #A7A9B1;
-    border: solid 7px transparent;
-    height: 50px;
-    
+        box-shadow: inset 0 0 10px 10px #A7A9B1;
+        border: solid 7px transparent;
+        height: 50px;
+
     }
 
     .Container-incidencias::-webkit-scrollbar-thumb:hover {
