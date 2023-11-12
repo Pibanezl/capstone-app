@@ -163,11 +163,11 @@ function Login({ user }) {
             <form onSubmit={submitHandler} className="Container-form-login">
               <div className="Label-login">
                 <p className="title-Input-login">Usuario:</p>
-                <input className="Input-login-user" type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                <input placeholder="Ingrese email ..." className="Input-login-user" type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
               </div>
               <div className="Label-login">
                 <p className="title-Input-login">Contraseña:</p>
-                <input className="Input-login-password" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                <input placeholder="Ingrese contraseña ..." className="Input-login-password" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
               </div>
               <input
                 type="submit"

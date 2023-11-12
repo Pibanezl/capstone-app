@@ -3,29 +3,6 @@
   background-color: #1E1F22;
 }
 
-.App-header {
-  min-height: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  display: flex;
-  flex-direction: row;
-  background: #313338;
-  box-shadow: 0px 4px 4px 0px rgb(0 0 0);
-  position: sticky;
-  top: 0;
-  z-index: 500;
-  height: 115px;
-}
-
-.App-header-title {
-  .App-header-title-logo {
-    height: 2rem;
-  }
-}
 
 .contenedorBotones {
   min-height: 90vh;
@@ -124,45 +101,6 @@
   font-size: 1rem;
 }
 
-.option-button-menu {
-  width: 100%;
-  border-bottom: 1px solid #00000021;
-  height: 1rem;
-  padding: 1rem 0rem 1rem 0rem;
-  align-items: center;
-  display: flex;
-  justify-content: flex-start;
-  color: #FFF;
-  font-family: Noto Sans;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 14px;
-  border-radius: 2.8px;
-
-  .img-button-menu {
-    width: 16.8px;
-    height: 16.8px;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .img-button-menu-incidencia {
-    width: 16.8px;
-    height: 16.8px;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    filter: invert(1);
-  }
-
-  .option-button-menu-text {}
-}
-
-.option-button-menu:hover {
-  border-radius: 2.8px;
-  background: #56AF85;
-  cursor: pointer;
-}
 
 /*LOGIN*/
 .Container-login {

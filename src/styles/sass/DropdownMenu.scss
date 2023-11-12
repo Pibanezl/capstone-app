@@ -1,54 +1,331 @@
 .dropdown-container {
-    position: relative;
-    display: inline-block;
-    z-index: 2;
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+  transition: all .2s;
+  border-radius: .2rem;
+}
+
+.dropdown-container:hover {
+  background-color: #314196;
+}
+
+.Label-login {
+  color: white;
+  text-align: start;
+  font-size: 1.4rem;
+}
+
+.Title-login {
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+
+.round-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: fixed;
+  border-radius: .5rem;
+  top: 8.2rem;
+  /* Margen de 50px desde la parte superior para evitar que tape el topbar */
+  right: 1rem;
+  bottom: 1rem;
+  background: #2B2D31;
+  width: 45%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  overflow-y: auto;
+
+}
+
+.dropdown-content-menu {
+  position: fixed;
+  border-radius: .5rem;
+  top: 8.2rem;
+  /* Margen de 50px desde la parte superior para evitar que tape el topbar */
+  left: 1rem;
+  bottom: 1rem;
+  background: #2B2D31;
+  width: 45%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+.img-button-profile {
+  height: 2rem;
+}
+
+.option-button-menu {
+  width: 100%;
+  border-bottom: 1px solid #00000021;
+  height: 1rem;
+  padding: 1rem 0rem 1rem 0rem;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  color: #FFF;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  border-radius: 2.8px;
+  padding-block: 1.5rem;
+  transition: all .2s;
+
+  .img-button-menu {
+    width: 30px;
+    height: 30px;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
-  
-  .round-button {
-    background-color: transparent;
-    color: white;
+
+  .img-button-menu-incidencia {
+    width: 30px;
+    height: 30px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    filter: invert(1);
+  }
+
+  .option-button-menu-text {}
+}
+
+.option-button-menu:hover {
+  border-radius: 2.8px;
+  background: #56AF85;
+  cursor: pointer;
+}
+
+/*LOGIN*/
+.Container-login {
+  .Container-login-inactive {
+    .Title-login {}
+
+    .Container-form-login-div {
+      width: 80%;
+      margin: 0 auto;
+      border-bottom: 2px solid white;
+
+      .Container-form-login {
+        width: 100%;
+        margin: 0 auto;
+
+        .Label-login {
+          width: 100%;
+
+          .title-Input-login {}
+
+          .Input-login-user {
+            background: url("https://cdn-icons-png.flaticon.com/512/9424/9424691.png") no-repeat;
+            background-size: 1rem;
+            background-position-y: center;
+            background-position-x: .8rem;
+            padding-left: 1.5rem;
+            padding-right: -1.5rem;
+            background-color: #777;
+            filter: invert(100%);
+            border: none;
+            border-radius: .3rem;
+            padding-block: .5rem;
+            width: 92%;
+            height: 25px;
+            font-size: 1.2rem;
+            padding-left: 2.5rem;
+          }
+
+          .Input-login-password {
+            background: url("https://cdn-icons-png.flaticon.com/512/159/159069.png") no-repeat;
+            background-size: 1rem;
+            background-position-y: center;
+            background-position-x: .8rem;
+            padding-left: 1.5rem;
+            padding-right: -1.5rem;
+            background-color: #777;
+            filter: invert(100%);
+            border: none;
+            border-radius: .3rem;
+            padding-block: .5rem;
+            width: 92%;
+            height: 25px;
+            font-size: 1.2rem;
+            padding-left: 2.5rem;
+          }
+
+          .Input-login-nombre {
+            background: url("https://cdn-icons-png.flaticon.com/512/159/159069.png") no-repeat;
+            background-size: .7rem;
+            background-position-y: center;
+            background-position-x: .5rem;
+            padding-left: 1.5rem;
+            padding-right: -1.5rem;
+            background-color: #777;
+            filter: invert(100%);
+            border: none;
+            border-radius: .3rem;
+            padding-block: .5rem;
+            width: 89%;
+            height: 25px;
+          }
+
+          .Input-login-apellido {
+            background: url("https://cdn-icons-png.flaticon.com/512/159/159069.png") no-repeat;
+            background-size: .7rem;
+            background-position-y: center;
+            background-position-x: .5rem;
+            padding-left: 1.5rem;
+            padding-right: -1.5rem;
+            background-color: #777;
+            filter: invert(100%);
+            border: none;
+            border-radius: .3rem;
+            padding-block: .5rem;
+            width: 89%;
+            height: 25px;
+          }
+
+          .Input-login-colegio {}
+
+          .Input-login-curso {
+            background: url("https://cdn-icons-png.flaticon.com/512/159/159069.png") no-repeat;
+            background-size: .7rem;
+            background-position-y: center;
+            background-position-x: .5rem;
+            padding-left: 1.5rem;
+            padding-right: -1.5rem;
+            background-color: #777;
+            filter: invert(100%);
+            border: none;
+            border-radius: .3rem;
+            padding-block: .5rem;
+            width: 100%;
+            height: 42px;
+          }
+
+          .Input-login-email {
+            background: url("https://cdn-icons-png.flaticon.com/512/159/159069.png") no-repeat;
+            background-size: .7rem;
+            background-position-y: center;
+            background-position-x: .5rem;
+            padding-left: 1.5rem;
+            padding-right: -1.5rem;
+            background-color: #777;
+            filter: invert(100%);
+            border: none;
+            border-radius: .3rem;
+            padding-block: .5rem;
+            width: 89%;
+            height: 25px;
+          }
+        }
+
+        .btn-enviar-form-login {
+          width: 100%;
+          padding-inline: 0.75rem;
+          background: #56AF85;
+          border: none;
+          border-radius: 0.3rem;
+          padding-block: 0.5rem;
+          color: white;
+          cursor: pointer;
+        }
+      }
+
+      .btn-restablecer-form-login {
+        margin-bottom: 2rem;
+        width: 100%;
+        padding-inline: 0.75rem;
+        background: #314196;
+        ;
+        border: none;
+        border-radius: 0.3rem;
+        padding-block: 0.5rem;
+        color: white;
+        cursor: pointer;
+      }
+
+      .Container-login-resetpass {
+        .title-resetpass {
+          font-size: 1rem;
+        }
+
+        .Input-login-resetpass {
+          background: url("https://cdn-icons-png.flaticon.com/512/2258/2258570.png") no-repeat;
+          background-size: .7rem;
+          background-position-y: center;
+          background-position-x: .5rem;
+          padding-left: 1.5rem;
+          padding-right: -1.5rem;
+          background-color: #777;
+          filter: invert(100%);
+          border: none;
+          border-radius: .3rem;
+          padding-block: .5rem;
+          width: 89%;
+          height: 25px;
+        }
+
+        .btn-login-resetpass {
+          margin-bottom: 2rem;
+          width: 100%;
+          padding-inline: 0.75rem;
+          background: #314196;
+          border: none;
+          border-radius: 0.3rem;
+          padding-block: 0.5rem;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .btn-quiero-restablecer {
+    margin-bottom: 2rem;
+    width: 80%;
+    padding-inline: 0.75rem;
+    background: #2F5A73;
     border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    border-radius: 0.3rem;
+    padding-block: 0.5rem;
+    color: white;
     cursor: pointer;
   }
-  
-  .dropdown-content {
-    position: fixed;
-    top: 126px; /* Margen de 50px desde la parte superior para evitar que tape el topbar */
-    right: 8px;
-    bottom: 0;
-    background: #2B2D31;
-    width: 309px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    overflow-y: auto;
-    
+
+  .Container-is-student {
+    display: flex;
+
+    .text-is-student {
+      font-size: 1rem;
+    }
+
+    .text-is-student:hover {
+      background: none;
+    }
+
+    .checkbox-is-student {}
   }
-  .dropdown-content-menu{
-    position: fixed;
-    top: 126px; /* Margen de 50px desde la parte superior para evitar que tape el topbar */
-    left: 8px;
-    bottom: 0;
-    background: #2B2D31;
-    width: 171px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    overflow-y: auto;
-  }
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #f2f2f2;
-  }
-  
-  .img-button-profile{
-    height: 2rem;
-  }
+}

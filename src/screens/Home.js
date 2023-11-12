@@ -7,10 +7,9 @@ import StudentGeneratorIncident from "../components/generator-incident-student"*
 function Home({ user }) {
 
   return (
-    <div>
+    <div className="home-body">
       {user === null ? (
-      <div>
-        Home comun
+      <div className="home-comun">
         <BannerPrincipal/>
         </div>) :
         (<div>

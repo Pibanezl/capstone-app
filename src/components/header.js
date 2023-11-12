@@ -3,6 +3,8 @@ import DropdownProfile from './dropdownProfile';
 import DropdownMenu from './dropdownMenu';
 import { Link } from 'react-router-dom';
 import logo from '../images/header.png';
+import "../styles/sass/header.scss"
+import "../styles/sass/general.scss"
 
 const Header = ({ user }) => {
   const [headerHeight, setHeaderHeight] = useState(115); // Altura inicial del header

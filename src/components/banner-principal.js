@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import "../styles/sass/banner-principal.scss"
+import "../styles/sass/general.scss"
 function BannerPrincipal() {
     const settings = {
         dots: true,
@@ -16,7 +17,7 @@ function BannerPrincipal() {
         <div className="container-slider">
             <Slider {...settings}>
         <div>
-            <img className="slider-img" src="https://fundacionsentidos.org/wp-content/uploads/2018/04/8673664599_e9df03de73_b.jpg" alt="nosotros" />
+            <img className="slider-img" src="https://web.larioja.org/landing/convivencia-escolar/img/convivencia-escolar---IMAGEN-PRINCIPAL-MOVIL.jpg" alt="nosotros" />
             <div className="slider-text">
                 <h3 div className="slider-title">Title 1</h3>
                 <p className="slider-description">Description for Image 1</p>
