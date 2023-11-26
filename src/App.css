@@ -3,23 +3,7 @@
   background-color: #1E1F22;
 }
 
-.App-header {
-  min-height: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  display: flex;
-  flex-direction: row;
-  background: #313338;
-  box-shadow: 0px 4px 4px 0px rgb(0 0 0);
-  position: sticky;
-  top: 0;
-  z-index: 500;
-  height: 115px;
-}
+
 .Container-incidencia{
   display: flex;
   flex-direction: column;
