@@ -11,18 +11,19 @@ import { firebaseApp } from './firebase_setup/firebase';
 import Header from './components/header'
 import IncidenciaForm from "./components/create-incident"
 import Dashboard from './screens/Dashboard';
+import Incidencia from './screens/Incidencia';
 const App = () => {
   const auth = getAuth(firebaseApp);
   const firestore = getFirestore(firebaseApp);
   const [user, setUser] = useState(null);
-  
 
   const setUserWithFirebaseAndRol = useCallback((usuarioFirebase) => {
     const getRol = async (uid) => {
       const docuRef = doc(firestore, `usuarios/${uid}`);
       const docuCifrada = await getDoc(docuRef);
+      console.log("ENTRO ROLL",docuCifrada.data())    
       const infoFinal = docuCifrada.data().rol;
-      return infoFinal;
+       return infoFinal;
     };
 
     getRol(usuarioFirebase.uid).then((rol) => {
@@ -50,12 +51,13 @@ const App = () => {
 
     return () => unsubscribe();
   }, [auth, user, setUserWithFirebaseAndRol]);
-
+  
   return (
     <Router basename="/">
       <div className="App">
         <Header user={user} />
         <Routes>
+          <Route path="/incidencia/:incidenciaId" element={<Incidencia user={user}/>} />
           <Route path="/" element={<Home user={user} />} />
           <Route path="form-incidencia" element={<IncidenciaForm user={user} />} />
           <Route path="dashboard" element={<Dashboard />} />

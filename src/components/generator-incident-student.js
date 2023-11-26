@@ -136,7 +136,7 @@ const StudentGeneratorIncident = ({ numStudents, user }) => {
         for (let i = 0; i < numStudents; i++) {
             const studentData = generateRandomStudentIncident();
             try {
-                const docRef = await addDoc(collection(db, "incidencia-estudiantil"), studentData);
+                const docRef = await addDoc(collection(db, "incidenciaEstudiantil"), studentData);
                 console.log("Estudiante agregado con ID: ", docRef.id);
             } catch (error) {
                 console.error("Error al agregar el estudiante: ", error);

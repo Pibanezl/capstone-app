@@ -60,7 +60,7 @@ const IncidenciaForm = ({ user }) => {
       };
 
       const coleccionIncidencia =
-        tipoIncidencia === 'academica' ? 'incidencia-estudiantil' : 'incidencia-comunitaria';
+        tipoIncidencia === 'academica' ? 'incidenciaEstudiantil' : 'incidencia-comunitaria';
 
       db.collection(coleccionIncidencia)
         .add(incidenciaData)
