@@ -4,6 +4,7 @@ import UserView from "../components/UserView";
 import BannerPrincipal from '../components/banner-principal';
 /*import StudentGenerator from "../components/generator-students"
 import StudentGeneratorIncident from "../components/generator-incident-student"*/
+import ClonarColeccion from "../components/cambiar-coleccion"
 function Home({ user }) {
 
   return (
@@ -18,6 +19,7 @@ function Home({ user }) {
           {/*<StudentGeneratorIncident numStudents={50} user={user}/>
           <StudentGenerator user={user} numStudents={50}/>*/}
           <BannerPrincipal/>
+          <ClonarColeccion/>
           {user.rol === "admin" ? <AdminView /> : <UserView />}
         </div>)}
     </div>

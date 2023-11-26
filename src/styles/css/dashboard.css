@@ -25,7 +25,34 @@
   overflow: auto;
   border-radius: 10px;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-li {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-filtro {
+  margin-bottom: 2rem;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-filtro .title-incidencias-filtro {
+  color: white;
+  margin: 1rem;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-filtro .body-incidencias-filtro {
+  display: flex;
+  justify-content: space-around;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-filtro .body-incidencias-filtro .input-incidencias-filtro {
+  background-size: 0.7rem;
+  background-position-y: center;
+  background-position-x: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: -1.5rem;
+  background-color: #777;
+  filter: invert(100%);
+  border: none;
+  border-radius: 0.3rem;
+  padding-block: 0.5rem rem;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-filtro .body-incidencias-filtro .input-incidencias-filtro::placeholder {
+  color: white;
+  filter: invert(100%);
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li {
   width: 95%;
   height: 100px;
   display: flex;
@@ -37,28 +64,28 @@
   color: #F2F3F5;
   border-radius: 5px;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-li .titulo-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .titulo-incidencia {
   font-size: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0rem;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-li .descripcion-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .descripcion-incidencia {
   font-size: 0.7rem;
   margin: 0.5rem;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-li .Container-buttons-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia {
   display: flex;
   justify-content: center;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-li .Container-buttons-incidencia .Container-img-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia .Container-img-incidencia {
   margin-right: 1rem;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-li .Container-buttons-incidencia .Container-img-incidencia .img-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia .Container-img-incidencia .img-incidencia {
   width: 1rem;
   height: 1rem;
   filter: invert(1);
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-li .Container-buttons-incidencia .btn-ver-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia .btn-ver-incidencia {
   font-size: 0.6rem;
 }
 .Container-dashboard .Container-incidencias-map .Container-map {

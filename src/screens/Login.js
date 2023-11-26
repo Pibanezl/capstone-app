@@ -198,7 +198,7 @@ function Login({ user }) {
             <div className="Container-login-inactive">
               <h1 className="Title-login">Registar estudiante</h1>
               <div className="Container-form-login-div">
-                <form onSubmit={submitHandlerUser} className="Container-form-login">
+                <form onSubmit={submitHandlerStudent} className="Container-form-login">
                   <div className="Label-login">
                     <p className="title-Input-login">Nombre:</p>
                     <input className="Input-login-nombre" type="text" name="nombre" value={estudiante.nombre} onChange={(e) => setEstudiante({ ...estudiante, nombre: e.target.value })} placeholder="Nombre" />
@@ -249,7 +249,7 @@ function Login({ user }) {
             <div className="Container-login-inactive">
               <h1 className="Title-login">Registar Usuario</h1>
               <div className="Container-form-login-div">
-                <form onSubmit={submitHandlerStudent} className="Container-form-login">
+                <form onSubmit={submitHandlerUser} className="Container-form-login">
                   <div className="Label-login">
                     <p className="title-Input-login">Nombre:</p>
                     <input className="Input-login-nombre" type="text" name="nombre" value={usuario.nombre} onChange={(e) => setUsuarios({ ...usuario, nombre: e.target.value })} placeholder="Nombre" />

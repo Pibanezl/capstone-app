@@ -20,7 +20,23 @@
   z-index: 500;
   height: 115px;
 }
-
+.Container-incidencia{
+  display: flex;
+  flex-direction: column;
+  .titulo-incidencia{
+    color: white;
+  }
+  .descripcion-incidencia{
+    color: white;
+  }
+  .Container-evidencia{
+    width: 600px;
+    place-self: center;
+    .img-evidencia{
+      width: 100%;
+    }
+  }
+}
 .App-header-title {
   .App-header-title-logo {
     height: 2rem;

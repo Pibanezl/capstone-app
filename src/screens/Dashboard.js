@@ -4,7 +4,8 @@ import '../styles/sass/dashboard.scss';
 import { MapContainer, Popup, TileLayer, Marker } from 'react-leaflet';
 import { Icon } from "leaflet";
 import GraficoDeBarras from "../components/grafic-bar";
-const Dashboard = ({ user }) => {
+import { useNavigate } from 'react-router-dom';
+const Dashboard = ({ user, onActiveIncidenciaChange }) => {
     const db = firebaseApp.firestore();
     const [incidencias, setIncidencias] = useState([]);
     const [activeIncidencia, setActiveIncidencia] = React.useState(null);
@@ -14,7 +15,7 @@ const Dashboard = ({ user }) => {
         iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149983.png",
         iconSize: [25, 25]
     });
-
+    const navigate = useNavigate();
     const [titleFilter, setTitleFilter] = useState('');
     const [descriptionFilter, setDescriptionFilter] = useState('');
   
@@ -109,15 +110,23 @@ const Dashboard = ({ user }) => {
     }, [db]);
 
     const handleStateChange = (incidencia) => {
-        console.log("ENTRO MARCADOR")
+        console.log("ENTRO MARCADOR",incidencia)
         setActiveIncidencia(incidencia)
+        
     };
+    const handleActiveIncidenciaChange = () => {
+        // ... código anterior ...
+    console.log("ACTIVE INCIDENCIA",activeIncidencia)
+        // Navega a la página de detalles de la incidencia
+        navigate(`/incidencia/${activeIncidencia.id}`);
+      };
 
     const handleIncidenceChange = (incidencia) => {
         setMapCenter({ lat: incidencia.ubicacion._lat, lng: incidencia.ubicacion._long });
+        setActiveIncidencia(incidencia); // Actualiza la incidencia activa y la posición del mapa
         //obtenerDatosGeograficos(mapCenter.lat, mapCenter.lng);
     };
-
+    
     /*function obtenerDatosGeograficos(latitud, longitud) {
       const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitud}&lon=${longitud}&zoom=18&addressdetails=1`;
     
@@ -216,7 +225,9 @@ const Dashboard = ({ user }) => {
                                 key={incidencia.id}
                                 position={[incidencia.ubicacion._lat, incidencia.ubicacion._long]}
                                 icon={icon}
-                                onClick={() => handleStateChange(incidencia)}
+                                eventHandlers={{
+                                    click: () => handleStateChange(incidencia),
+                                }}
                             />
                         ))}
 
@@ -232,6 +243,7 @@ const Dashboard = ({ user }) => {
                             >
                                 <div>
                                     <h2>{activeIncidencia.titulo}</h2>
+                                    <button className="btn-ver-incidencia" onClick={handleActiveIncidenciaChange}>Ver detalles</button>
                                 </div>
                             </Popup>
                         )}
