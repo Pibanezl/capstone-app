@@ -1,7 +1,6 @@
 body {
   margin: 0;
   background: rgb(21, 21, 22);
-  background: linear-gradient(180deg, rgb(21, 21, 22) 0%, rgb(14, 12, 24) 51%, rgb(52, 54, 84) 100%);
   font-family: Arial, Helvetica, sans-serif;
 }
 
