@@ -12,7 +12,7 @@ function Incidencia({ user }) {
             // Verifica si incidenciaId tiene un valor antes de intentar cargar la incidencia
             if (incidenciaId) {
                 const db = firebaseApp.firestore();
-                const docRef = db.collection('incidenciaEstudiantil').doc(incidenciaId);
+                const docRef = db.collection('incidencias').doc(incidenciaId);
 
                 try {
                     const docSnapshot = await docRef.get();
@@ -60,7 +60,7 @@ function Incidencia({ user }) {
                     (
                         null
                     )}
-            </div>) : null}
+            </div>) : <h3 className="alerta-evidencia">¡Esta incidencia no contiene evidencia adjunta!</h3>}
 
         </div>
     );

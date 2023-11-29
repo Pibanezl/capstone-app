@@ -1,0 +1,113 @@
+.Container-grafico-barras .Container-graficos-redondos {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  height: 450px;
+}
+.Container-grafico-barras .Container-graficos-redondos .Container-grafico-barras-rigth {
+  width: 50%;
+}
+.Container-grafico-barras .Container-graficos-redondos .Container-grafico-barras-rigth .title-grafico-barras {
+  color: white;
+  font-size: 1.2rem;
+}
+.Container-grafico-barras .Container-graficos-redondos .Container-grafico-torta {
+  width: 50%;
+}
+.Container-grafico-barras .Container-graficos-redondos .Container-grafico-torta .title-grafico-barras {
+  color: white;
+  font-size: 1.2rem;
+}
+.Container-grafico-barras .Container-graficos-redondos .Container-grafico-torta .recharts-wrapper .recharts-legend-wrapper {
+  bottom: 70px !important;
+  left: 50px !important;
+}
+.Container-grafico-barras .Container-grafico-barras-meses {
+  text-align: -webkit-center;
+}
+.Container-grafico-barras .Container-grafico-barras-meses .title-grafico-barras {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.Container-datos-comunas-general {
+  padding-bottom: 2rem;
+}
+.Container-datos-comunas-general .title-comunas {
+  color: white;
+}
+.Container-datos-comunas-general .Container-datos-comunas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-comunas {
+  border: 2px solid #ccc;
+  width: 30%;
+  border-radius: 10px;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-comunas .Container-incidencias-lista-comuna {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-comunas .Container-incidencias-lista-comuna .Container-incidencias-li-comunas {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  background-color: #f0f0f0;
+  list-style: none;
+  margin: 0.7rem 0rem 0.7rem 0.7rem;
+  background-color: #3E3F44;
+  color: #F2F3F5;
+  border-radius: 5px;
+  justify-content: center;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-comunas .Container-incidencias-lista-comuna .Container-incidencias-li-comunas .Container-left-comunas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-comunas .Container-incidencias-lista-comuna .Container-incidencias-li-comunas .Container-left-comunas .nombre-comuna {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-comunas .Container-incidencias-lista-comuna .Container-incidencias-li-comunas .Container-left-comunas .cantidad-comuna {
+  font-size: 0.7rem;
+  margin: 0.5rem;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-incidencias-lista-comuna::-webkit-scrollbar {
+  width: 25px;
+  border-radius: 10px;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-incidencias-lista-comuna::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px 10px rgba(0, 128, 0, 0);
+  border: solid 7px transparent;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-incidencias-lista-comuna::-webkit-scrollbar-track-piece {
+  background-color: #1E1F22;
+  border-radius: 10px;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-incidencias-lista-comuna::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px 10px #A7A9B1;
+  border: solid 7px transparent;
+  height: 50px;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-incidencias-lista-comuna::-webkit-scrollbar-thumb:hover {
+  box-shadow: inset 0 0 10px 10px #6f7075;
+  border: solid 7px transparent;
+  border-radius: 20px;
+  height: 50px;
+}
+.Container-datos-comunas-general .Container-datos-comunas .Container-incidencias-datos-comuna {
+  display: flex;
+  color: white;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=graficos.css.map */

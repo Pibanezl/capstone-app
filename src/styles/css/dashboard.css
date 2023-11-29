@@ -22,8 +22,22 @@
 .Container-dashboard .Container-incidencias-map .Container-incidencias {
   width: 40%;
   border: 2px solid #ccc;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
   border-radius: 10px;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .mensaje-alerta-sin-incidencias {
+  color: white;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .button-form-incidencia {
+  margin-top: 2rem !important;
+  background-color: white;
+  padding: 0.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .button-form-incidencia .text-form-incidencia {
+  text-decoration: none;
 }
 .Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-filtro {
   margin-bottom: 2rem;
@@ -58,35 +72,53 @@
   display: flex;
   background-color: #f0f0f0;
   list-style: none;
-  flex-direction: column;
   margin: 0.7rem 0rem 0.7rem 0.7rem;
   background-color: #3E3F44;
   color: #F2F3F5;
   border-radius: 5px;
+  justify-content: space-between;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .titulo-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-left .titulo-incidencia {
   font-size: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0rem;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .descripcion-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-left .descripcion-incidencia {
   font-size: 0.7rem;
   margin: 0.5rem;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 2rem;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-right .Container-buttons-incidencia {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia .Container-img-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-right .Container-buttons-incidencia .fecha-incidencia {
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
+}
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-right .Container-buttons-incidencia .Container-img-incidencia {
   margin-right: 1rem;
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia .Container-img-incidencia .img-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-right .Container-buttons-incidencia .Container-img-incidencia .img-incidencia {
   width: 1rem;
   height: 1rem;
   filter: invert(1);
 }
-.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-buttons-incidencia .btn-ver-incidencia {
+.Container-dashboard .Container-incidencias-map .Container-incidencias .Container-incidencias-lista .Container-incidencias-li .Container-right .Container-buttons-incidencia .btn-ver-incidencia {
   font-size: 0.6rem;
+  margin-top: 0.5rem;
 }
 .Container-dashboard .Container-incidencias-map .Container-map {
   width: 60%;
@@ -104,6 +136,10 @@
 }
 .Container-dashboard .Container-incidencias-niveles {
   background-color: #1E1F22;
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  margin: 0 auto;
 }
 .Container-dashboard .Container-incidencias::-webkit-scrollbar {
   width: 25px;

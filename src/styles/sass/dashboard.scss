@@ -23,11 +23,25 @@
         .Container-incidencias {
             width: 40%;
             border: 2px solid #ccc;
-            overflow: auto;
+            overflow-y: scroll;
+            overflow-x: hidden;
             border-radius: 10px;
-
+.mensaje-alerta-sin-incidencias{
+    color: white;
+}
+.button-form-incidencia{
+   margin-top: 2rem !important;
+    background-color: white;
+    padding: .5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    .text-form-incidencia{
+        text-decoration: none;
+    }
+}
             .Container-incidencias-filtro {
                 margin-bottom: 2rem;
+
                 .title-incidencias-filtro {
                     color: white;
                     margin: 1rem;
@@ -49,11 +63,12 @@
                         border-radius: 0.3rem;
                         padding-block: 0.5rem rem;
                     }
+
                     .input-incidencias-filtro::placeholder {
                         color: white;
                         filter: invert(100%);
                     }
-                    
+
                 }
             }
 
@@ -64,39 +79,60 @@
                     display: flex;
                     background-color: #f0f0f0;
                     list-style: none;
-                    flex-direction: column;
                     margin: 0.7rem 0rem 0.7rem 0.7rem;
                     background-color: #3E3F44;
                     color: #F2F3F5;
                     border-radius: 5px;
+                    justify-content: space-between;
 
-                    .titulo-incidencia {
-                        font-size: 1rem;
-                        margin-top: .5rem;
-                        margin-bottom: 0rem;
-                    }
-
-                    .descripcion-incidencia {
-                        font-size: .7rem;
-                        margin: 0.5rem;
-                    }
-
-                    .Container-buttons-incidencia {
+                    .Container-left {
                         display: flex;
+                        flex-direction: column;
                         justify-content: center;
+                        margin-left: 2rem;
 
-                        .Container-img-incidencia {
-                            margin-right: 1rem;
-
-                            .img-incidencia {
-                                width: 1rem;
-                                height: 1rem;
-                                filter: invert(1);
-                            }
+                        .titulo-incidencia {
+                            font-size: 1rem;
+                            margin-top: .5rem;
+                            margin-bottom: 0rem;
                         }
 
-                        .btn-ver-incidencia {
-                            font-size: .6rem;
+                        .descripcion-incidencia {
+                            font-size: .7rem;
+                            margin: 0.5rem;
+                        }
+                    }
+
+                    .Container-right {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        margin-right: 2rem;
+
+                        .Container-buttons-incidencia {
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: column;
+
+                            .fecha-incidencia {
+                                margin-top: 0rem;
+                                margin-bottom: .5rem;
+                            }
+
+                            .Container-img-incidencia {
+                                margin-right: 1rem;
+
+                                .img-incidencia {
+                                    width: 1rem;
+                                    height: 1rem;
+                                    filter: invert(1);
+                                }
+                            }
+
+                            .btn-ver-incidencia {
+                                font-size: .6rem;
+                                margin-top: .5rem;
+                            }
                         }
                     }
                 }
@@ -126,6 +162,10 @@
 
     .Container-incidencias-niveles {
         background-color: #1E1F22;
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        margin: 0 auto;
 
         .Container-grafico-barras {
             .title-grafico-barras {}

@@ -1,25 +1,22 @@
 import React from "react";
-import AdminView from "../components/AdminView";
-import UserView from "../components/UserView";
 import BannerPrincipal from '../components/banner-principal';
-/*import StudentGenerator from "../components/generator-students"
-import StudentGeneratorIncident from "../components/generator-incident-student"*/
-import ClonarColeccion from "../components/cambiar-coleccion"
+//import StudentGenerator from "../components/generator-students"
+//import StudentGeneratorIncident from "../components/generator-incident-student"
+import "../styles/sass/general.scss"
 function Home({ user }) {
 
   return (
-    <div className="home-body">
+    <div>
       {user === null ? (
-      <div className="home-comun">
+      <div>
+        <h2 style={{color: "white"}}>BIENVENIDO {user?.infoUsuario?.nombre.toUpperCase()} {user?.infoUsuari?.apellido.toUpperCase()}</h2>
         <BannerPrincipal/>
         </div>) :
         (<div>
-          Home
+          <h2 style={{color: "white"}}>BIENVENIDO {user?.infoUsuario?.nombre.toUpperCase()} {user?.infoUsuari?.apellido.toUpperCase()}</h2>
           {/*<StudentGeneratorIncident numStudents={50} user={user}/>
           <StudentGenerator user={user} numStudents={50}/>*/}
           <BannerPrincipal/>
-          <ClonarColeccion/>
-          {user.rol === "admin" ? <AdminView /> : <UserView />}
         </div>)}
     </div>
   );

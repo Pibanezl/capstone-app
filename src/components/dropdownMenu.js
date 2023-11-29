@@ -34,14 +34,14 @@ const DropdownMenuLeft = ({ user }) => {
 
     return (
         <div className="dropdown-container">
-            <button className="round-button-menu" onClick={toggleDropdown}>
+            <button className="round-button-menu" data-testid='mi-boton' onClick={toggleDropdown}>
                 <img className="img-button-menu" src={menuHamburguesa} alt="menu"></img>
             </button>
             {isDropdownOpen && (
                 <div className="dropdown-content-menu">
                     {user != null && isDropdownOpen ? (
                         <div className="container-menu">
-                            <a href="/dashboard" className="option-button-menu">
+                            <a href="/dashboard" className="option-button-menu" data-testid="dashboard-link">
                                 <img className="img-button-menu" src={dashboardIcon} alt="icono-menu"></img>
                                 <span className="option-button-menu-text">Dashboard</span>
                             </a>

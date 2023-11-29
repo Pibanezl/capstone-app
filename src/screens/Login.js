@@ -10,11 +10,7 @@ import {
 import {
   // getFirestore,
   doc,
-  collection,
   setDoc,
-  query,
-  where,
-  getDocs,
 } from "firebase/firestore";
 import PasswordReset from '../components/ResetPass';
 import colegios from "../Utils/colegios.json";
@@ -28,11 +24,10 @@ function Login({ user }) {
   const [switchIsStudent, setSwitchIsStudent] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let rol = "admin"
   const [estudiante, setEstudiante] = useState({
     nombre: '',
     apellido: '',
-    colegio: {},
+    colegio: '',
     curso: '',
     email: '',
     password: '',
@@ -65,18 +60,18 @@ function Login({ user }) {
     '4° Medio'
   ];
 
-  async function registrarUsuario(email, password, rol) {
+  async function registrarUsuario(email, password) {
     let docuRef;
     try {
       const infoUsuario = await createUserWithEmailAndPassword(auth, email, password);
       if (switchIsStudent) {
         console.log("is estudent")
         docuRef = doc(firestore, `estudiantes/${infoUsuario.user.uid}`);
-        await setDoc(docuRef, { nombre: estudiante.nombre, apellido: estudiante.apellido, colegio: estudiante.colegio, curso: estudiante.curso, email: estudiante.email, rol: "student" });
+        await setDoc(docuRef, { nombre: estudiante.nombre, apellido: estudiante.apellido, colegio: estudiante.colegio, curso: estudiante.curso, email: estudiante.email.toLowerCase(), rol: "estudiante" });
       } else {
-        console.log("NO ")
+        console.log("NO")
         docuRef = doc(firestore, `usuarios/${infoUsuario.user.uid}`);
-        await setDoc(docuRef, { nombre: usuario.nombre, apellido: usuario.apellido, rut: usuario.rut, comuna: usuario.comuna, calle: usuario.calle, email: usuario.email, rol: "user" });
+        await setDoc(docuRef, { nombre: usuario.nombre, apellido: usuario.apellido, rut: usuario.rut, comuna: usuario.comuna, calle: usuario.calle, email: usuario.email.toLowerCase(), rol: "usuario" });
       }
 
       // Registro exitoso, puedes realizar otras acciones aquí si es necesario.
@@ -97,7 +92,6 @@ function Login({ user }) {
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log("submit", email, password, rol);
     handleSignIn(email, password)
   }
 
@@ -106,30 +100,7 @@ function Login({ user }) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       // Obtener una referencia a la colección de usuarios
-      const usersCollection = collection(firestore, "usuarios");
-
-      // Consulta para buscar un usuario por correo electrónico
-      const userQuery = query(usersCollection, where("correo", "==", email));
-
-      // Obtener los documentos que coinciden con la consulta
-      const querySnapshot = await getDocs(userQuery);
-
-      if (!querySnapshot.empty) {
-        // El usuario con este correo electrónico existe en la colección
-        // Puedes obtener el rol desde el primer documento (debería haber solo uno)
-        const userDoc = querySnapshot.docs[0];
-        const userRole = userDoc.data().rol;
-
-        if (userRole === "admin") {
-          // Mostrar la función de administrador
-          console.log("INICIO ADMIN");
-          //return <AdminFunction />;
-        } else if (userRole === "user") {
-          // Mostrar la función de usuario regular
-          console.log("INICIO USER");
-          //return <UserFunction />;
-        }
-      }
+      
       toast.success('Inicio de sesión exitoso');
 
     } catch (error) {
@@ -140,16 +111,15 @@ function Login({ user }) {
 
   function submitHandlerStudent(e) {
     e.preventDefault();
-    console.log("submit", email, password, rol);
-    registrarUsuario(estudiante.email, estudiante.password, "student");
+    registrarUsuario(estudiante.email, estudiante.password, "estudiante");
 
   }
 
   function submitHandlerUser(e) {
     e.preventDefault();
-    console.log("submit", email, password, rol);
-    registrarUsuario(usuario.email, usuario.password, "user");
+    registrarUsuario(usuario.email, usuario.password, "usuario");
   }
+  console.log("ESTUDIANTEE", estudiante)
   return (
     <div className="Container-login">
       {user != null ? (
@@ -163,11 +133,11 @@ function Login({ user }) {
             <form onSubmit={submitHandler} className="Container-form-login">
               <div className="Label-login">
                 <p className="title-Input-login">Usuario:</p>
-                <input placeholder="Ingrese email ..." className="Input-login-user" type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                <input className="Input-login-user" type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
               </div>
               <div className="Label-login">
                 <p className="title-Input-login">Contraseña:</p>
-                <input placeholder="Ingrese contraseña ..." className="Input-login-password" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                <input className="Input-login-password" type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
               </div>
               <input
                 type="submit"
@@ -209,14 +179,25 @@ function Login({ user }) {
                   </div>
                   <div className="Label-login">
                     <p className="title-Input-login">Colegio:</p>
-                    <Select
-                      className="Input-login-colegio"
-                      value={estudiante.colegio}
-                      onChange={(e) => setEstudiante({ ...estudiante, colegio: e.target.value })}
-                      options={options}
-                      isSearchable={true}
-                      placeholder="Selecciona un colegio"
-                    />
+                    {estudiante.colegio === "" ? (
+                      <Select
+                        className="Input-login-colegio"
+                        value={estudiante.colegio}
+                        onChange={(e) => setEstudiante({ ...estudiante, colegio: e.value })}
+                        options={options}
+                        isSearchable={true}
+                        placeholder="Selecciona un colegio"
+                      />
+                    ) : (
+                      <Select
+                        className="Input-login-colegio"
+                        value={estudiante.colegio}
+                        onChange={(e) => setEstudiante({ ...estudiante, colegio: e.value })}
+                        options={options}
+                        isSearchable={true}
+                        placeholder={estudiante.colegio}
+                      />
+                    )}
                   </div>
                   <div className="Label-login">
                     <p className="title-Input-login">Curso:</p>

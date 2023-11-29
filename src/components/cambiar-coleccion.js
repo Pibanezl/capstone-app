@@ -22,7 +22,6 @@ db.collection('incidencia-estudiantil').get().then(snapshot => {
   }, [db]);
   return (
     <div className="dropdown-container">
-      HOLAAAA
     </div>
   );
 };
