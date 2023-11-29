@@ -7,6 +7,7 @@ import { GeoPoint, Timestamp } from 'firebase/firestore';
 import { firebaseApp } from '../firebase_setup/firebase';
 import colegios from "../Utils/colegios.json";
 import Select from 'react-select';
+import "../styles/sass/createincident.scss";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const IncidenciaForm = ({ user }) => {
   const db = firebaseApp.firestore();
