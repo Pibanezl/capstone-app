@@ -1,4 +1,6 @@
-# New Project
+# Computer Science Degree Project
+
+Check on: https://portafolio-titulo.netlify.app/
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
